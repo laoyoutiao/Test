@@ -72,7 +72,7 @@
         [_commentarray setArray:[SocialWorkerCommentInfo instanceArrayDictFromDict:_commentdict]];
          NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"discusstime" ascending:YES]];
         [_commentarray sortUsingDescriptors:sortDescriptors];
-        NSLog(@"%@",_commentarray);
+//        NSLog(@"%@",_commentarray);
         SocialWorkerCommentInfo *commentinfo = [[SocialWorkerCommentInfo alloc] initWithDictionary:[_commentarray objectAtIndex:[_commentarray count]- 1]];
         _CommentOne.text = [NSString stringWithFormat:@"%@ : %@\n%@\n",commentinfo.discussor,commentinfo.discusstime,commentinfo.descript];
         if([_commentarray count] == 1)

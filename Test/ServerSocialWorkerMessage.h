@@ -17,14 +17,18 @@ typedef void (^CommentBlock)(NSDictionary *commentdict);
 +(ServerSocialWorkerMessage *)sharedInstance;
 
 //社工资料
+
 - (void)GetWorkerpostCity:(NSString *)city;
 
 - (void)GetWorkerpostCity:(NSString *)city Area:(NSString *)area;
 
 - (NSDictionary *)ResultWorkerDictionary;
 
+- (NSDictionary *)ResultAreaWorkerDictionary;
+
 
 //社工评论
+
 + (void)GetWorkerCommentpostName:(NSString *)username Row:(NSInteger)rowcount Block:(CommentBlock)block;
 
 

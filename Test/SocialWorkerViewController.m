@@ -17,12 +17,12 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollerView;
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 @property (strong, nonatomic) SocialWorkerTableViewCell *cell;
-@property (strong, nonatomic) ServerSocialWorkerMessage *ServerSocialWorkerMessage;
 @property (strong, nonatomic) HotWheelsOfFrittersView *HotWheelsView;
 @property (strong, nonatomic) NSArray *WorkerMessageDictArray;
 @property (assign, nonatomic) NSInteger WorkerMessageTime;
 @property (strong, nonatomic) NSMutableDictionary *WorkerMessageDict;
 @property (assign, nonatomic) BOOL IsFirst;
+@property (assign, nonatomic) BOOL IsArea;
 @end
 
 @implementation SocialWorkerViewController
@@ -30,9 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _ServerSocialWorkerMessage = [ServerSocialWorkerMessage sharedInstance];
     _WorkerMessageDict = [[NSMutableDictionary alloc] init];
-    _WorkerMessageDictArray = [[NSArray alloc] init];
     
     [self setScorllerView];
     [self ReviseNavigation];
@@ -76,10 +74,10 @@
 {
     _IsFirst = YES;
     [self setTableView];
-    [_ServerSocialWorkerMessage GetWorkerpostCity:@"佛山市"];
+    [[ServerSocialWorkerMessage sharedInstance] GetWorkerpostCity:@"佛山市"];
     _WorkerMessageTime = 0;
-    NSTimer *timer;
-    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(workermessage:) userInfo:nil repeats:YES];
+    _IsArea = NO;
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(workermessage:) userInfo:nil repeats:YES];
 }
 
 - (void)setTableView
@@ -96,7 +94,12 @@
 - (void)workermessage:(NSTimer *)timer
 {
     _WorkerMessageTime ++;
-    [_WorkerMessageDict setDictionary:[_ServerSocialWorkerMessage ResultWorkerDictionary]];
+    if (_IsArea) {
+        [_WorkerMessageDict setDictionary:[[ServerSocialWorkerMessage sharedInstance] ResultAreaWorkerDictionary]];
+    }else
+    {
+        [_WorkerMessageDict setDictionary:[[ServerSocialWorkerMessage sharedInstance] ResultWorkerDictionary]];
+    }
     if ([_WorkerMessageDict count]) {
         [_HotWheelsView stop];
         [_HotWheelsView removeFromSuperview];
@@ -135,10 +138,10 @@
 {
     [self setTableView];
     NSString *area = button.titleLabel.text;
-    [_ServerSocialWorkerMessage GetWorkerpostCity:@"佛山市" Area:area];
+    [[ServerSocialWorkerMessage sharedInstance] GetWorkerpostCity:@"佛山市" Area:area];
     _WorkerMessageTime = 0;
-    NSTimer *timer;
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(workermessage:) userInfo:nil repeats:YES];
+    _IsArea = YES;
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(workermessage:) userInfo:nil repeats:YES];
 }
 
 - (void)clickLevelSeque:(UIButton *)button

@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 @property (strong, nonatomic) HotWheelsOfFrittersView *HotWheelsView;
 @property (assign, nonatomic) NSInteger BookMessageTime;
-@property (strong, nonatomic) ServerSocialWorkerMessage *ServerSocialWorkerMessage;
 @property (strong, nonatomic) NSMutableDictionary *BookMessageDict;
 @property (strong, nonatomic) NSMutableArray *BookMessageDictArray;
 @property (strong, nonatomic) UserInfo *userinfo;
@@ -29,9 +28,8 @@
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfo"];
     _userinfo = [[UserInfo alloc] initWithDictionary:dict];
     
-    _ServerSocialWorkerMessage = [ServerSocialWorkerMessage sharedInstance];
     _BookMessageDict = [[NSMutableDictionary alloc] init];
-    _BookMessageDictArray = [[NSMutableDictionary alloc] init];
+    _BookMessageDictArray = [[NSMutableArray alloc] init];
     
     [self workerMessage];
     // Do any additional setup after loading the view.
@@ -46,9 +44,8 @@
 {
     [self setTableView];
     _BookMessageTime = 0;
-    [_ServerSocialWorkerMessage GetBookMessageUsername:_userinfo.username Usertype:_userinfo.usertype];
-    NSTimer *timer;
-    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(workermessage:) userInfo:nil repeats:YES];
+    [[ServerSocialWorkerMessage sharedInstance] GetBookMessageUsername:_userinfo.username Usertype:_userinfo.usertype];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(workermessage:) userInfo:nil repeats:YES];
 }
 
 - (void)setTableView
@@ -63,7 +60,7 @@
 - (void)workermessage:(NSTimer *)timer
 {
     _BookMessageTime ++;
-    [_BookMessageDict setDictionary:[_ServerSocialWorkerMessage ResultBookMessageDictionary]];
+    [_BookMessageDict setDictionary:[[ServerSocialWorkerMessage sharedInstance] ResultBookMessageDictionary]];
     if ([_BookMessageDict count]) {
         [_HotWheelsView stop];
         [_HotWheelsView removeFromSuperview];

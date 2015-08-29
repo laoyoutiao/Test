@@ -11,6 +11,7 @@
 
 @interface ServerSocialWorkerMessage ()
 @property (strong, nonatomic) __block NSDictionary *resultworkerdict;
+@property (strong, nonatomic) __block NSDictionary *resultareaworkerdict;
 @property (strong, nonatomic) __block NSDictionary *resultbookdict;
 @end
 
@@ -75,13 +76,13 @@
                 NSString *keyname = [NSString stringWithFormat:@"%d",i];
                 [mutabledict setObject:messdict forKey:keyname];
             }
-            _resultworkerdict = mutabledict;
+            _resultareaworkerdict = mutabledict;
         }else
         {
-            _resultworkerdict = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"]};
+            _resultareaworkerdict = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"]};
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        _resultworkerdict = @{@"result": @"false"};
+        _resultareaworkerdict = @{@"result": @"false"};
     }];
 }
 
@@ -158,5 +159,9 @@
     return  _resultbookdict;
 }
 
+- (NSDictionary *)ResultAreaWorkerDictionary
+{
+    return _resultareaworkerdict;
+}
 
 @end

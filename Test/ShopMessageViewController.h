@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShopInfo.h"
 
 @interface ShopMessageViewController : UIViewController
+
+@property (strong, nonatomic) ShopInfo *info;
 
 @end

@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *UserNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *PassWordTextField;
 @property (strong, nonatomic) HotWheelsOfFrittersView *hotwheels;
-@property (strong, nonatomic) ServerLoginOrRegister *serverlogin;
 @property (strong, nonatomic) UIView *hotwheelview;
 @property (assign, nonatomic) NSInteger logintime;
 @property (strong, nonatomic) NSDictionary *logindict;
@@ -32,7 +31,6 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UserInfo"];
 
     self.view.backgroundColor = [UIColor whiteColor];
-    _serverlogin = [ServerLoginOrRegister sharedInstance];
     
     [self ReviseNavigation];
     // Do any additional setup after loading the view.
@@ -41,9 +39,8 @@
 - (IBAction)ClickLoginButton:(id)sender {
     
     if (![_UserNameTextField.text isEqualToString:@""] && ![_PassWordTextField.text isEqualToString:@""]) {
-        [_serverlogin LoginpostUsername:_UserNameTextField.text Password:_PassWordTextField.text];
-        NSTimer *time;
-        time = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getdict:) userInfo:nil repeats:YES];
+        [[ServerLoginOrRegister sharedInstance] LoginpostUsername:_UserNameTextField.text Password:_PassWordTextField.text];
+        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getdict:) userInfo:nil repeats:YES];
         _logintime = 0;
         if (!_hotwheelview) {
             _hotwheelview = [[UIView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
@@ -71,7 +68,7 @@
 - (void)getdict:(NSTimer *)timer
 {
     _logintime ++;
-    _logindict = [_serverlogin ResultLoginDictionary];
+    _logindict = [[ServerLoginOrRegister sharedInstance] ResultLoginDictionary];
     if ([_logindict count]) {
         if ([[_logindict objectForKey:@"result"] isEqualToString:@"true"]) {
             EquipmentBindingViewController *equipbingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EquipmentBindingView"];

@@ -57,6 +57,7 @@
 		5BEF8CB11B8AC58400338752 /* ServerSocialWorkerMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF8CB01B8AC58400338752 /* ServerSocialWorkerMessage.m */; };
 		5BEF8CB51B8ACD2A00338752 /* SocialWorkerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF8CB41B8ACD2A00338752 /* SocialWorkerInfo.m */; };
 		5BF07C321B90118200C1F3DA /* ShopInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07C311B90118200C1F3DA /* ShopInfo.m */; };
+		5BF07C391B905D8F00C1F3DA /* ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07C381B905D8F00C1F3DA /* ShopTableViewCell.m */; };
 		5BF5DDF91B69B96D008DAF9D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5DDF81B69B96D008DAF9D /* main.m */; };
 		5BF5DDFC1B69B96D008DAF9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5DDFB1B69B96D008DAF9D /* AppDelegate.m */; };
 		5BF5DE051B69B96D008DAF9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5DE031B69B96D008DAF9D /* Main.storyboard */; };
@@ -179,6 +180,8 @@
 		5BEF8CB41B8ACD2A00338752 /* SocialWorkerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialWorkerInfo.m; sourceTree = "<group>"; };
 		5BF07C301B90118200C1F3DA /* ShopInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfo.h; sourceTree = "<group>"; };
 		5BF07C311B90118200C1F3DA /* ShopInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfo.m; sourceTree = "<group>"; };
+		5BF07C371B905D8F00C1F3DA /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
+		5BF07C381B905D8F00C1F3DA /* ShopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewCell.m; sourceTree = "<group>"; };
 		5BF5DDF31B69B96D008DAF9D /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5DDF71B69B96D008DAF9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BF5DDF81B69B96D008DAF9D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -356,20 +359,10 @@
 		5BEB03381B6F0EBD00A9ED0F /* PeopleServer */ = {
 			isa = PBXGroup;
 			children = (
-				5BEB033A1B6F10B700A9ED0F /* SocialWorkerViewController.h */,
-				5BEB033B1B6F10B700A9ED0F /* SocialWorkerViewController.m */,
-				5BEB19A01B70B861007F87C0 /* SocialWorkerTableViewCell.h */,
-				5BEB19A11B70B861007F87C0 /* SocialWorkerTableViewCell.m */,
-				5BEB033D1B6F10D800A9ED0F /* ShopViewController.h */,
-				5BEB033E1B6F10D800A9ED0F /* ShopViewController.m */,
-				5BEB03401B6F10FC00A9ED0F /* ThingViewController.h */,
-				5BEB03411B6F10FC00A9ED0F /* ThingViewController.m */,
-				5BEB03431B6F110A00A9ED0F /* MessageViewController.h */,
-				5BEB03441B6F110A00A9ED0F /* MessageViewController.m */,
-				5BEB199D1B705780007F87C0 /* WorkerMessageViewController.h */,
-				5BEB199E1B705780007F87C0 /* WorkerMessageViewController.m */,
-				5BE97E421B78343800D1000E /* ShopMessageViewController.h */,
-				5BE97E431B78343800D1000E /* ShopMessageViewController.m */,
+				5BF07C331B905CB900C1F3DA /* Social */,
+				5BF07C341B905CD100C1F3DA /* Shop */,
+				5BF07C361B905D2100C1F3DA /* OldManThing */,
+				5BF07C351B905CF700C1F3DA /* MyMessage */,
 			);
 			name = PeopleServer;
 			sourceTree = "<group>";
@@ -452,6 +445,50 @@
 				5BEEF9C61B6C72AC00FA7342 /* MainOptionViewController.m */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		5BF07C331B905CB900C1F3DA /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				5BEB033A1B6F10B700A9ED0F /* SocialWorkerViewController.h */,
+				5BEB033B1B6F10B700A9ED0F /* SocialWorkerViewController.m */,
+				5BEB19A01B70B861007F87C0 /* SocialWorkerTableViewCell.h */,
+				5BEB19A11B70B861007F87C0 /* SocialWorkerTableViewCell.m */,
+				5BEB199D1B705780007F87C0 /* WorkerMessageViewController.h */,
+				5BEB199E1B705780007F87C0 /* WorkerMessageViewController.m */,
+			);
+			name = Social;
+			sourceTree = "<group>";
+		};
+		5BF07C341B905CD100C1F3DA /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				5BEB033D1B6F10D800A9ED0F /* ShopViewController.h */,
+				5BEB033E1B6F10D800A9ED0F /* ShopViewController.m */,
+				5BE97E421B78343800D1000E /* ShopMessageViewController.h */,
+				5BE97E431B78343800D1000E /* ShopMessageViewController.m */,
+				5BF07C371B905D8F00C1F3DA /* ShopTableViewCell.h */,
+				5BF07C381B905D8F00C1F3DA /* ShopTableViewCell.m */,
+			);
+			name = Shop;
+			sourceTree = "<group>";
+		};
+		5BF07C351B905CF700C1F3DA /* MyMessage */ = {
+			isa = PBXGroup;
+			children = (
+				5BEB03431B6F110A00A9ED0F /* MessageViewController.h */,
+				5BEB03441B6F110A00A9ED0F /* MessageViewController.m */,
+			);
+			name = MyMessage;
+			sourceTree = "<group>";
+		};
+		5BF07C361B905D2100C1F3DA /* OldManThing */ = {
+			isa = PBXGroup;
+			children = (
+				5BEB03401B6F10FC00A9ED0F /* ThingViewController.h */,
+				5BEB03411B6F10FC00A9ED0F /* ThingViewController.m */,
+			);
+			name = OldManThing;
 			sourceTree = "<group>";
 		};
 		5BF5DDEA1B69B96D008DAF9D = {
@@ -648,6 +685,7 @@
 				5BEB199F1B705780007F87C0 /* WorkerMessageViewController.m in Sources */,
 				5BE97E5C1B78408E00D1000E /* AFNetworkReachabilityManager.m in Sources */,
 				5BEF8CB51B8ACD2A00338752 /* SocialWorkerInfo.m in Sources */,
+				5BF07C391B905D8F00C1F3DA /* ShopTableViewCell.m in Sources */,
 				5BE97E601B78408E00D1000E /* AFURLResponseSerialization.m in Sources */,
 				5BEB03481B6F13D900A9ED0F /* GpsLocateViewController.m in Sources */,
 				5BFA552F1B74481D001AC7E1 /* LineChartView.m in Sources */,

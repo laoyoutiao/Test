@@ -38,4 +38,13 @@
     return self;
 }
 
++ (NSArray *)instanceArrayDictFromDict:(NSDictionary *)dict
+{
+    NSMutableArray *instanceArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [dict count]; i ++){
+        [instanceArray  addObject:[[self alloc] initWithDictionary:[dict objectForKey:[NSString stringWithFormat:@"%d",i]]]];
+    }
+    return [NSArray arrayWithArray:instanceArray];
+}
+
 @end

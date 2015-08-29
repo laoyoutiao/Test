@@ -52,7 +52,6 @@
                 [mutabledict setObject:messdict forKey:keyname];
             }
             _resultcityshopdict = mutabledict;
-            NSLog(@"%@",_resultcityshopdict);
         }else
         {
             _resultcityshopdict = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"]};

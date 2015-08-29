@@ -35,4 +35,6 @@
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 
++ (NSArray *)instanceArrayDictFromDict:(NSDictionary *)dict;
+
 @end
