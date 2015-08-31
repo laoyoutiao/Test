@@ -91,7 +91,7 @@
     
     UIButton *DescBtn = [[UIButton alloc] initWithFrame:CGRectMake(Width * 2, 0, Width, _TabbarViewHeight.constant)];
     DescBtn.backgroundColor = [UIColor clearColor];
-    [DescBtn setTitle:@"只能排序" forState:UIControlStateNormal];
+    [DescBtn setTitle:@"智能排序" forState:UIControlStateNormal];
     [DescBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_TabbarView addSubview:DescBtn];
 }
@@ -105,16 +105,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _cell = [tableView dequeueReusableCellWithIdentifier:@"SocialWorkerTableViewCell" forIndexPath:indexPath];
-//    tableView.rowHeight = [_cell HeighTofCell];
-//    [_cell InfoOfCell:[_WorkerMessageDictArray objectAtIndex:indexPath.row]];
+    _cell = [tableView dequeueReusableCellWithIdentifier:@"ShopTableViewCell" forIndexPath:indexPath];
+    [_cell InfoOfCell:[_ShopMessageDictArray objectAtIndex:indexPath.row]];
+    tableView.rowHeight = [_cell HeighTofCell];
     return _cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ShopMessageViewController *ShopMessageView = [self.storyboard instantiateViewControllerWithIdentifier:@"WorkerMessageView"];
+    ShopMessageViewController *ShopMessageView = [self.storyboard instantiateViewControllerWithIdentifier:@"ShopMessageView"];
     ShopMessageView.info = [_ShopMessageDictArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:ShopMessageView animated:YES];
 }
@@ -143,7 +143,7 @@
         if ([[_ShopMessageDict objectForKey:@"result"] isEqualToString:@"true"]) {
             [_ShopMessageDict removeObjectForKey:@"result"];
             _ShopMessageDictArray = [ShopInfo instanceArrayDictFromDict:_ShopMessageDict];
-            NSLog(@"%@",_ShopMessageDictArray);
+//            NSLog(@"%@",_ShopMessageDictArray);
             [_TableView setHidden:NO];
             [_TableView reloadData];
         }else

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShopInfo.h"
 
 @interface ShopTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) ShopInfo *info;
+
+- (CGFloat)HeighTofCell;
+
+- (void)InfoOfCell:(ShopInfo *)info;
 
 @end

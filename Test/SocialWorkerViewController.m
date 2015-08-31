@@ -160,8 +160,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _cell = [tableView dequeueReusableCellWithIdentifier:@"SocialWorkerTableViewCell" forIndexPath:indexPath];
-    tableView.rowHeight = [_cell HeighTofCell];
     [_cell InfoOfCell:[_WorkerMessageDictArray objectAtIndex:indexPath.row]];
+    tableView.rowHeight = [_cell HeighTofCell];
     return _cell;
 }
 
