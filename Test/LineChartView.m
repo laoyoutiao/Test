@@ -26,8 +26,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        _hInterval = 10;
-        _vInterval = 10;
         linesLayer = [[CALayer alloc] init];
         linesLayer.masksToBounds = YES;
         linesLayer.contentsGravity = kCAGravityLeft;
@@ -69,7 +67,7 @@
     int x = self.bounds.size.width ;
     int y = self.bounds.size.height ;
 
-    for (int i=0; i<_vDesc.count; i++) {
+    for (int i=0; i<8; i++) {
         CGPoint bPoint = CGPointMake(30, y);
         CGPoint ePoint = CGPointMake(x, y);
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -77,21 +75,29 @@
         [label setTextAlignment:NSTextAlignmentCenter];
         [label setBackgroundColor:[UIColor clearColor]];
         [label setTextColor:[UIColor whiteColor]];
-        [label setText:[_vDesc objectAtIndex:i]];
+        [label setText:[NSString stringWithFormat:@"%d",i*20]];
+        label.font = [UIFont systemFontOfSize:15];
         [self addSubview:label];
         CGContextMoveToPoint(context, bPoint.x, bPoint.y-30);
         CGContextAddLineToPoint(context, ePoint.x, ePoint.y-30);
         y -= 50;
     }
     
-    for (int i=0; i < _hDesc.count-1; i++) {
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(i*_vInterval+30, self.bounds.size.height - 20, 15, 15)];
+    for (int i=0; i < 30; i++) {
+        UILabel *label;
+        if (i < 5)
+        {
+            label = [[UILabel alloc]initWithFrame:CGRectMake(i*6+30, self.bounds.size.height - 20, 9, 15)];
+        }else{
+            label = [[UILabel alloc]initWithFrame:CGRectMake(i*10+12, self.bounds.size.height - 20, 9, 15)];
+        }
         [label setTextAlignment:NSTextAlignmentCenter];
         [label setBackgroundColor:[UIColor clearColor]];
         [label setTextColor:[UIColor whiteColor]];
         label.numberOfLines = 1;
         label.adjustsFontSizeToFitWidth = YES;
-        [label setText:[_hDesc objectAtIndex:i]];
+        label.font = [UIFont systemFontOfSize:8];
+        [label setText:[NSString stringWithFormat:@"%d",i*2]];
         [self addSubview:label];
     }
     
@@ -108,23 +114,30 @@
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
 
 	//绘图
-	CGPoint p1 = [[_array objectAtIndex:0] CGPointValue];
 	int i = 1;
-	CGContextMoveToPoint(context, p1.x+30, self.bounds.size.height - p1.y);
+	CGContextMoveToPoint(context, 30, self.bounds.size.height - 30 - [[_array objectAtIndex:0] floatValue]*10/4);
+    UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+    [bt setBackgroundColor:[UIColor redColor]];
+    [bt setFrame:CGRectMake(0, 0, 5, 5)];
+    [bt setCenter:CGPointMake(30, self.bounds.size.height - 30 - [[_array objectAtIndex:0] floatValue]*10/4)];
+    [self addSubview:bt];
+    
 	for (; i<[_array count]; i++)
 	{
-		p1 = [[_array objectAtIndex:i] CGPointValue];
-        CGPoint goPoint = CGPointMake(30 + p1.x / 5, self.bounds.size.height - 30 - p1.y*_vInterval/4);
+        CGPoint goPoint;
+        if (i < 5)
+        {
+            goPoint = CGPointMake(i*7+30, self.bounds.size.height - 30 - [[_array objectAtIndex:i] floatValue]*10/4);
+        }else{
+            goPoint = CGPointMake(i*11+8, self.bounds.size.height - 30 - [[_array objectAtIndex:i] floatValue]*10/4);
+        }
 		CGContextAddLineToPoint(context, goPoint.x, goPoint.y);;
         
         //添加触摸点
         UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
         [bt setBackgroundColor:[UIColor redColor]];
-        [bt setFrame:CGRectMake(0, 0, 10, 10)];
+        [bt setFrame:CGRectMake(0, 0, 5, 5)];
         [bt setCenter:goPoint];
-        [bt addTarget:self 
-               action:@selector(btAction:) 
-     forControlEvents:UIControlEventTouchUpInside];
         bt.tag = 100+i;
         [self addSubview:bt];
 	}
@@ -132,13 +145,5 @@
     
 }
 
-- (void)btAction:(id)sender{
-    UIButton *bt = (UIButton*)sender;
-    CGPoint point = [[_array objectAtIndex:(bt.tag - 100)] CGPointValue];
-    NSString *text = [NSString stringWithFormat:@"%.1f",point.y];
-    [disLabel setText:text];
-    popView.center = CGPointMake(bt.center.x, bt.center.y - popView.frame.size.height/2);
-    [popView setAlpha:1.0f];
-}
 
 @end

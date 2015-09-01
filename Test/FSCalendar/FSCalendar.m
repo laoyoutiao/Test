@@ -246,7 +246,7 @@
     cell.image = [self imageForDate:cell.date];
     cell.subtitle  = [self subtitleForDate:cell.date];
     cell.hasEvent = [self hasEventForDate:cell.date];
-    NSLog(@"%@",_FirstSelectCell.date);
+//    NSLog(@"%@",_FirstSelectCell.date);
 //    if(_FirstSelectCell.date == cell.date)
 //    {
 //        [cell performSelecting];
@@ -275,7 +275,7 @@
     }];
     if (_isSelectTwo) {
         _FirstSelectCell = cell;
-        NSLog(@"%@",_FirstSelectCell.date);
+//        NSLog(@"%@",_FirstSelectCell.date);
     }else
     {
         _SecondSelectCell = cell;
@@ -312,18 +312,19 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    FSCalendarCell *cell = (FSCalendarCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    if (_isSelectTwo) {
-        [_SecondSelectCell performDeselecting];
-        [_FirstSelectCell performDeselecting];
-        _FirstSelectCell = NULL;
-        _SecondSelectCell = NULL;
-        _isSelectTwo = NO;
-    }else
-    {
-        _isSelectTwo = YES;
-    }
-    
+    FSCalendarCell *cell = (FSCalendarCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    [cell performDeselecting];
+//    if (_isSelectTwo) {
+//        [_SecondSelectCell performDeselecting];
+//        [_FirstSelectCell performDeselecting];
+//        _FirstSelectCell = NULL;
+//        _SecondSelectCell = NULL;
+//        _isSelectTwo = NO;
+//    }else
+//    {
+//        _isSelectTwo = YES;
+//    }
+//    
 }
 
 

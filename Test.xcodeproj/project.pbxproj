@@ -58,6 +58,7 @@
 		5BEF8CB51B8ACD2A00338752 /* SocialWorkerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF8CB41B8ACD2A00338752 /* SocialWorkerInfo.m */; };
 		5BF07C321B90118200C1F3DA /* ShopInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07C311B90118200C1F3DA /* ShopInfo.m */; };
 		5BF07C391B905D8F00C1F3DA /* ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07C381B905D8F00C1F3DA /* ShopTableViewCell.m */; };
+		5BF26E421B952FC40068986C /* ServerHealthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF26E411B952FC40068986C /* ServerHealthInfo.m */; };
 		5BF5DDF91B69B96D008DAF9D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5DDF81B69B96D008DAF9D /* main.m */; };
 		5BF5DDFC1B69B96D008DAF9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5DDFB1B69B96D008DAF9D /* AppDelegate.m */; };
 		5BF5DE051B69B96D008DAF9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5DE031B69B96D008DAF9D /* Main.storyboard */; };
@@ -182,6 +183,8 @@
 		5BF07C311B90118200C1F3DA /* ShopInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfo.m; sourceTree = "<group>"; };
 		5BF07C371B905D8F00C1F3DA /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
 		5BF07C381B905D8F00C1F3DA /* ShopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewCell.m; sourceTree = "<group>"; };
+		5BF26E401B952FC40068986C /* ServerHealthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerHealthInfo.h; sourceTree = "<group>"; };
+		5BF26E411B952FC40068986C /* ServerHealthInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerHealthInfo.m; sourceTree = "<group>"; };
 		5BF5DDF31B69B96D008DAF9D /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5DDF71B69B96D008DAF9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BF5DDF81B69B96D008DAF9D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -426,6 +429,8 @@
 				5BED49E51B7C4754002F8AF0 /* ServerShopMessage.m */,
 				5BEF8CAF1B8AC58400338752 /* ServerSocialWorkerMessage.h */,
 				5BEF8CB01B8AC58400338752 /* ServerSocialWorkerMessage.m */,
+				5BF26E401B952FC40068986C /* ServerHealthInfo.h */,
+				5BF26E411B952FC40068986C /* ServerHealthInfo.m */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -719,6 +724,7 @@
 				5BE97E681B78827300D1000E /* RegistViewController.m in Sources */,
 				5BEB034E1B6F140000A9ED0F /* FallViewController.m in Sources */,
 				5BE97E5A1B78408E00D1000E /* AFHTTPRequestOperationManager.m in Sources */,
+				5BF26E421B952FC40068986C /* ServerHealthInfo.m in Sources */,
 				5BFA55321B745EB2001AC7E1 /* ScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -41,7 +41,6 @@
     _NameLabel.text = [NSString stringWithFormat:@"%@",info.shop_name];
     _AddressLabel.text = [NSString stringWithFormat:@"地址 : %@",info.address];
     
-    NSLog(@"%ld",_AddressLabel.text.length);
     if (_AddressLabel.text.length > 32) {
         _HeightOfAddressLabel.constant = 52;
     }else if(_AddressLabel.text.length > 16)
