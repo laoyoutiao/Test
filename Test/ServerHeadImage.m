@@ -11,13 +11,11 @@
 
 @interface ServerHeadImage ()
 
-@property (strong, nonatomic) __block NSDictionary *resultuserdict;
-@property (strong, nonatomic) __block NSDictionary *resultsocialdict;
+@property (strong, nonatomic) __block NSDictionary *resultdict;
 
 @end
 
 @implementation ServerHeadImage
-
 
 +(ServerHeadImage *)sharedInstance
 {
@@ -34,70 +32,50 @@
 
 #pragma mark
 
-- (void)HeadImagepostUsername:(NSString *)username
-                     Image:(UIImage *)image
+- (void)ImagepostUsername:(NSString *)username
+                        Image:(UIImage *)image ImageKind:(ImageKind)imagekind
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSData *data = UIImageJPEGRepresentation(image, 1.0f);
     NSString *ImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSDictionary *parameters = @{@"operate": @"upload",
+    NSString *operate;
+    switch (imagekind) {
+        case 0:
+            operate = @"upload";
+            break;
+            
+        case 1:
+            operate = @"upimg";
+            break;
+            
+        default:
+            break;
+    }
+    NSDictionary *parameters = @{@"operate": operate,
                                  @"username": username,
                                  @"imgStr": ImageStr};
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/HeadImage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            _resultuserdict = @{@"result": @"true",
+            _resultdict = @{@"result": @"true",
                       @"message": [responseObject objectForKey:@"message"]};
         }else
         {
-            _resultuserdict = @{@"result": @"false",
+            _resultdict = @{@"result": @"false",
                       @"message": [responseObject objectForKey:@"message"]};
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        _resultuserdict = @{@"result": @"false",
-                  @"message": @"网络或未知错误"};
-    }];
-}
-
-
-
-- (void)SocialWorkerpostUsername:(NSString *)username
-                           image:(UIImage *)image
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSData *data = UIImageJPEGRepresentation(image, 1.0f);
-    NSString *ImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSDictionary *parameters = @{@"operate": @"upimg",
-                                 @"username": username,
-                                 @"imgStr": ImageStr};
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/HeadImage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"json-->%@",responseObject);
-        NSLog(@"%@",[responseObject objectForKey:@"message"]);
-        if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            _resultsocialdict = @{@"result": @"true",
-                      @"message": [responseObject objectForKey:@"message"]};
-        }else
-        {
-            _resultsocialdict = @{@"result": @"false",
-                      @"message": [responseObject objectForKey:@"message"]};
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        _resultsocialdict = @{@"result": @"false",
+        _resultdict = @{@"result": @"false",
                   @"message": @"网络或未知错误"};
     }];
 }
 
 #pragma mark
 
-- (NSDictionary *)ResultUserDictionary
+- (NSDictionary *)ResultDictionary
 {
-    return _resultuserdict;
-}
-
-- (NSDictionary *)ResultSocialDictionary
-{
-    return _resultsocialdict;
+    return _resultdict;
 }
 
 

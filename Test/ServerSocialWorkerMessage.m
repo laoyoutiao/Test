@@ -11,7 +11,6 @@
 
 @interface ServerSocialWorkerMessage ()
 @property (strong, nonatomic) __block NSDictionary *resultworkerdict;
-@property (strong, nonatomic) __block NSDictionary *resultareaworkerdict;
 @property (strong, nonatomic) __block NSDictionary *resultbookdict;
 @end
 
@@ -31,13 +30,29 @@
 
 #pragma mark
 
+- (void)GetWorkerpostCity:(NSString *)city Area:(NSString *)area SelectKind:(SelectKind)selectkind
+{
+    switch (selectkind) {
+        case 0:
+            [self GetWorkerpostCity:city];
+            break;
+            
+        case 1:
+            [self GetWorkerpostCity:city Area:area];
+            break;
+            
+        default:
+            break;
+    }
+}
+
 - (void)GetWorkerpostCity:(NSString *)city
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"operate": @"look",
                                  @"city": city};
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/WorkerManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"json-->%@",responseObject);
+        //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
             NSMutableDictionary *mutabledict = [[NSMutableDictionary alloc] init];
@@ -76,13 +91,13 @@
                 NSString *keyname = [NSString stringWithFormat:@"%d",i];
                 [mutabledict setObject:messdict forKey:keyname];
             }
-            _resultareaworkerdict = mutabledict;
+            _resultworkerdict = mutabledict;
         }else
         {
-            _resultareaworkerdict = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"]};
+            _resultworkerdict = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"]};
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        _resultareaworkerdict = @{@"result": @"false"};
+        _resultworkerdict = @{@"result": @"false"};
     }];
 }
 
@@ -157,11 +172,6 @@
 - (NSDictionary *)ResultBookMessageDictionary
 {
     return  _resultbookdict;
-}
-
-- (NSDictionary *)ResultAreaWorkerDictionary
-{
-    return _resultareaworkerdict;
 }
 
 @end

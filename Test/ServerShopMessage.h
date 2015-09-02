@@ -8,20 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ServerShopMessage : NSObject
+typedef NS_ENUM(NSInteger, SelectKind){
+    SelectKindCity = 0,
+    SelectKindArea = 1
+};
 
+@interface ServerShopMessage : NSObject
 
 +(ServerShopMessage *)sharedInstance;
 
-//获取城市商店
-- (void)GetShoppostCity:(NSString *)city;
+//获取商店
+- (void)GetShoppostString:(NSString *)string SelectKind:(SelectKind)selectkind;
 
 - (NSDictionary *)ResultCityShopDictionary;
-
-//获取范围商店
-- (void)AreaOfShoppostBound:(NSString *)bound;
-
-- (NSDictionary *)ResultAreaShopDictionary;
 
 //获取商店商品
 - (void)InfoOfShoppostShopID:(NSString *)shopid;

@@ -9,20 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, ImageKind){
+    ImageKindHeadImage = 0,
+    ImageKindWorkerImage = 1
+};
+
 @interface ServerHeadImage : NSObject
 
 +(ServerHeadImage *)sharedInstance;
 
-//上传头像
-- (void)HeadImagepostUsername:(NSString *)username
-                   Image:(UIImage *)image;
+//上传图片
+- (void)ImagepostUsername:(NSString *)username
+                   Image:(UIImage *)image ImageKind:(ImageKind)imagekind;
 
-- (NSDictionary *)ResultUserDictionary;
+- (NSDictionary *)ResultDictionary;
 
-//社工图片
-- (void)SocialWorkerpostUsername:(NSString *)username
-                           image:(UIImage *)image;
-
-- (NSDictionary *)ResultSocialDictionary;
 
 @end

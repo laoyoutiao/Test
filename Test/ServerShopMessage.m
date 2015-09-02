@@ -34,6 +34,22 @@
 
 #pragma mark
 
+- (void)GetShoppostString:(NSString *)string SelectKind:(SelectKind)selectkind
+{
+    switch (selectkind) {
+        case 0:
+            [self GetShoppostCity:string];
+            break;
+            
+        case 1:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
 - (void)GetShoppostCity:(NSString *)city
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

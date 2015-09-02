@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, SelectKind){
+    SelectKindCity = 0,
+    SelectKindArea = 1
+};
+
 typedef void (^CommentBlock)(NSDictionary *commentdict);
 
 @interface ServerSocialWorkerMessage : NSObject
@@ -18,13 +23,9 @@ typedef void (^CommentBlock)(NSDictionary *commentdict);
 
 //社工资料
 
-- (void)GetWorkerpostCity:(NSString *)city;
-
-- (void)GetWorkerpostCity:(NSString *)city Area:(NSString *)area;
+- (void)GetWorkerpostCity:(NSString *)city Area:(NSString *)area SelectKind:(SelectKind)selectkind;
 
 - (NSDictionary *)ResultWorkerDictionary;
-
-- (NSDictionary *)ResultAreaWorkerDictionary;
 
 
 //社工评论

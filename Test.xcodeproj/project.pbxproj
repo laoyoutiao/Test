@@ -59,8 +59,15 @@
 		5BF07C321B90118200C1F3DA /* ShopInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07C311B90118200C1F3DA /* ShopInfo.m */; };
 		5BF07C391B905D8F00C1F3DA /* ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07C381B905D8F00C1F3DA /* ShopTableViewCell.m */; };
 		5BF26E421B952FC40068986C /* ServerHealthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF26E411B952FC40068986C /* ServerHealthInfo.m */; };
+		5BF26E9B1B9575950068986C /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5BF26E9A1B9575950068986C /* mapapi.bundle */; };
+		5BF26E9D1B95759E0068986C /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF26E9C1B95759E0068986C /* BaiduMapAPI.framework */; };
+		5BF26E9F1B9575B60068986C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF26E9E1B9575B60068986C /* Security.framework */; };
+		5BF26EA11B9575C60068986C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF26EA01B9575C60068986C /* SystemConfiguration.framework */; };
+		5BF26EA31B9575D20068986C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF26EA21B9575D20068986C /* CoreLocation.framework */; };
+		5BF26EA51B9575DE0068986C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF26EA41B9575DE0068986C /* OpenGLES.framework */; };
+		5BF26EA71B9576160068986C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF26EA61B9576160068986C /* CoreGraphics.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5BF5DDF91B69B96D008DAF9D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5DDF81B69B96D008DAF9D /* main.m */; };
-		5BF5DDFC1B69B96D008DAF9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5DDFB1B69B96D008DAF9D /* AppDelegate.m */; };
+		5BF5DDFC1B69B96D008DAF9D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5DDFB1B69B96D008DAF9D /* AppDelegate.mm */; };
 		5BF5DE051B69B96D008DAF9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5DE031B69B96D008DAF9D /* Main.storyboard */; };
 		5BF5DE071B69B96D008DAF9D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5DE061B69B96D008DAF9D /* Images.xcassets */; };
 		5BF5DE0A1B69B96D008DAF9D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5DE081B69B96D008DAF9D /* LaunchScreen.xib */; };
@@ -185,11 +192,18 @@
 		5BF07C381B905D8F00C1F3DA /* ShopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewCell.m; sourceTree = "<group>"; };
 		5BF26E401B952FC40068986C /* ServerHealthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerHealthInfo.h; sourceTree = "<group>"; };
 		5BF26E411B952FC40068986C /* ServerHealthInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerHealthInfo.m; sourceTree = "<group>"; };
+		5BF26E9A1B9575950068986C /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = ../MapTest/mapapi.bundle; sourceTree = "<group>"; };
+		5BF26E9C1B95759E0068986C /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI.framework; sourceTree = "<group>"; };
+		5BF26E9E1B9575B60068986C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5BF26EA01B9575C60068986C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5BF26EA21B9575D20068986C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5BF26EA41B9575DE0068986C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		5BF26EA61B9576160068986C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5BF5DDF31B69B96D008DAF9D /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5DDF71B69B96D008DAF9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BF5DDF81B69B96D008DAF9D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5BF5DDFA1B69B96D008DAF9D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5BF5DDFB1B69B96D008DAF9D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5BF5DDFB1B69B96D008DAF9D /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		5BF5DE041B69B96D008DAF9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BF5DE061B69B96D008DAF9D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5BF5DE091B69B96D008DAF9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -215,8 +229,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BF26EA71B9576160068986C /* CoreGraphics.framework in Frameworks */,
+				5BF26EA51B9575DE0068986C /* OpenGLES.framework in Frameworks */,
+				5BF26EA31B9575D20068986C /* CoreLocation.framework in Frameworks */,
+				5BF26EA11B9575C60068986C /* SystemConfiguration.framework in Frameworks */,
+				5BF26E9F1B9575B60068986C /* Security.framework in Frameworks */,
 				5BEC51551B730C5E00EED09B /* SpriteKit.framework in Frameworks */,
 				5BEC3C981B6AFC1D0069660C /* libiconv.dylib in Frameworks */,
+				5BF26E9D1B95759E0068986C /* BaiduMapAPI.framework in Frameworks */,
 				5BEC3C961B6AFC150069660C /* QuartzCore.framework in Frameworks */,
 				5BEC3C941B6AFC0B0069660C /* CoreVideo.framework in Frameworks */,
 				5BEC3C921B6AFC020069660C /* CoreMedia.framework in Frameworks */,
@@ -496,14 +516,37 @@
 			name = OldManThing;
 			sourceTree = "<group>";
 		};
-		5BF5DDEA1B69B96D008DAF9D = {
+		5BF26E981B9574EC0068986C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				5BEC51541B730C5E00EED09B /* SpriteKit.framework */,
 				5BEC3C971B6AFC1D0069660C /* libiconv.dylib */,
+				5BF26EA61B9576160068986C /* CoreGraphics.framework */,
+				5BF26EA41B9575DE0068986C /* OpenGLES.framework */,
+				5BF26EA21B9575D20068986C /* CoreLocation.framework */,
+				5BF26EA01B9575C60068986C /* SystemConfiguration.framework */,
+				5BF26E9E1B9575B60068986C /* Security.framework */,
+				5BF26E9C1B95759E0068986C /* BaiduMapAPI.framework */,
+				5BEC51541B730C5E00EED09B /* SpriteKit.framework */,
 				5BEC3C951B6AFC150069660C /* QuartzCore.framework */,
 				5BEC3C931B6AFC0B0069660C /* CoreVideo.framework */,
 				5BEC3C911B6AFC020069660C /* CoreMedia.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		5BF26E991B9575370068986C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5BF26E9A1B9575950068986C /* mapapi.bundle */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		5BF5DDEA1B69B96D008DAF9D = {
+			isa = PBXGroup;
+			children = (
+				5BF26E991B9575370068986C /* Resource */,
+				5BF26E981B9574EC0068986C /* Framework */,
 				5BEF8CAC1B8AADDD00338752 /* Vender */,
 				5BF5DDF51B69B96D008DAF9D /* Test */,
 				5BF5DE121B69B96D008DAF9D /* TestTests */,
@@ -528,7 +571,7 @@
 				5BE97E621B7841D600D1000E /* Model */,
 				5BF5DE221B69C242008DAF9D /* Controller */,
 				5BF5DDFA1B69B96D008DAF9D /* AppDelegate.h */,
-				5BF5DDFB1B69B96D008DAF9D /* AppDelegate.m */,
+				5BF5DDFB1B69B96D008DAF9D /* AppDelegate.mm */,
 				5BF5DE061B69B96D008DAF9D /* Images.xcassets */,
 				5BF5DE081B69B96D008DAF9D /* LaunchScreen.xib */,
 				5BF5DDF61B69B96D008DAF9D /* Supporting Files */,
@@ -652,6 +695,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BF5DE051B69B96D008DAF9D /* Main.storyboard in Resources */,
+				5BF26E9B1B9575950068986C /* mapapi.bundle in Resources */,
 				5BF5DE0A1B69B96D008DAF9D /* LaunchScreen.xib in Resources */,
 				5BF5DE071B69B96D008DAF9D /* Images.xcassets in Resources */,
 			);
@@ -684,7 +728,7 @@
 				5BF5DE281B69C647008DAF9D /* LoginRegisterViewController.m in Sources */,
 				5B06491B1B85764E003B8EE2 /* FSCalendar.m in Sources */,
 				5BEB03511B6F141200A9ED0F /* LocusViewController.m in Sources */,
-				5BF5DDFC1B69B96D008DAF9D /* AppDelegate.m in Sources */,
+				5BF5DDFC1B69B96D008DAF9D /* AppDelegate.mm in Sources */,
 				5BE97E5D1B78408E00D1000E /* AFSecurityPolicy.m in Sources */,
 				5BEC3CBF1B6B25590069660C /* MainWhereViewController.m in Sources */,
 				5BEB199F1B705780007F87C0 /* WorkerMessageViewController.m in Sources */,
@@ -853,6 +897,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -867,6 +915,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

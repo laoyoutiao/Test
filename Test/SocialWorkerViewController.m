@@ -14,6 +14,7 @@
 #import "HotWheelsOfFrittersView.h"
 
 @interface SocialWorkerViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollerView;
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 @property (strong, nonatomic) SocialWorkerTableViewCell *cell;
@@ -22,7 +23,6 @@
 @property (assign, nonatomic) NSInteger WorkerMessageTime;
 @property (strong, nonatomic) NSMutableDictionary *WorkerMessageDict;
 @property (assign, nonatomic) BOOL IsFirst;
-@property (assign, nonatomic) BOOL IsArea;
 @end
 
 @implementation SocialWorkerViewController
@@ -74,9 +74,8 @@
 {
     _IsFirst = YES;
     [self setTableView];
-    [[ServerSocialWorkerMessage sharedInstance] GetWorkerpostCity:@"佛山市"];
+    [[ServerSocialWorkerMessage sharedInstance] GetWorkerpostCity:@"佛山市" Area:@"" SelectKind:SelectKindCity];
     _WorkerMessageTime = 0;
-    _IsArea = NO;
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(workermessage:) userInfo:nil repeats:YES];
 }
 
@@ -94,12 +93,7 @@
 - (void)workermessage:(NSTimer *)timer
 {
     _WorkerMessageTime ++;
-    if (_IsArea) {
-        [_WorkerMessageDict setDictionary:[[ServerSocialWorkerMessage sharedInstance] ResultAreaWorkerDictionary]];
-    }else
-    {
-        [_WorkerMessageDict setDictionary:[[ServerSocialWorkerMessage sharedInstance] ResultWorkerDictionary]];
-    }
+    [_WorkerMessageDict setDictionary:[[ServerSocialWorkerMessage sharedInstance] ResultWorkerDictionary]];
     if ([_WorkerMessageDict count]) {
         [_HotWheelsView stop];
         [_HotWheelsView removeFromSuperview];
@@ -138,9 +132,8 @@
 {
     [self setTableView];
     NSString *area = button.titleLabel.text;
-    [[ServerSocialWorkerMessage sharedInstance] GetWorkerpostCity:@"佛山市" Area:area];
+    [[ServerSocialWorkerMessage sharedInstance] GetWorkerpostCity:@"佛山市" Area:area SelectKind:SelectKindArea];
     _WorkerMessageTime = 0;
-    _IsArea = YES;
     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(workermessage:) userInfo:nil repeats:YES];
 }
 
