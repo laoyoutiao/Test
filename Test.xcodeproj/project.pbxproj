@@ -270,13 +270,13 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		5BCC5B7A1B8C446500C0CAB1 /* protocol */ = {
+		5BCC5B7A1B8C446500C0CAB1 /* NSDictionary */ = {
 			isa = PBXGroup;
 			children = (
 				5BCC5B7D1B8C4BF800C0CAB1 /* NSDictionary+Safe.h */,
 				5BCC5B7E1B8C4BF800C0CAB1 /* NSDictionary+Safe.m */,
 			);
-			name = protocol;
+			name = NSDictionary;
 			sourceTree = "<group>";
 		};
 		5BCC5B801B8C4C2300C0CAB1 /* Info */ = {
@@ -324,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				5BCC5B801B8C4C2300C0CAB1 /* Info */,
-				5BCC5B7A1B8C446500C0CAB1 /* protocol */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -352,14 +351,8 @@
 		5BEB03361B6F0EAE00A9ED0F /* HealthCard */ = {
 			isa = PBXGroup;
 			children = (
-				5BFA552D1B74481D001AC7E1 /* LineChartView.h */,
-				5BFA552E1B74481D001AC7E1 /* LineChartView.m */,
-				5BE99A541B719B2B0028DD06 /* HealthDataViewController.h */,
-				5BE99A551B719B2B0028DD06 /* HealthDataViewController.m */,
-				5BE99A571B719B3C0028DD06 /* HealthRemindViewController.h */,
-				5BE99A581B719B3C0028DD06 /* HealthRemindViewController.m */,
-				5BFA55301B745EB2001AC7E1 /* ScheduleViewController.h */,
-				5BFA55311B745EB2001AC7E1 /* ScheduleViewController.m */,
+				5BED6B6B1B967D8900E4D15A /* HealthRemind */,
+				5BED6B6A1B967D6D00E4D15A /* HealthData */,
 			);
 			name = HealthCard;
 			sourceTree = "<group>";
@@ -397,7 +390,7 @@
 			name = Option;
 			sourceTree = "<group>";
 		};
-		5BEC3CB81B6B233D0069660C /* Login */ = {
+		5BEC3CB81B6B233D0069660C /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
 				5BF5DE231B69C3D9008DAF9D /* NavigationController.h */,
@@ -411,10 +404,10 @@
 				5BE97E661B78827300D1000E /* RegistViewController.h */,
 				5BE97E671B78827300D1000E /* RegistViewController.m */,
 			);
-			name = Login;
+			name = LoginViewController;
 			sourceTree = "<group>";
 		};
-		5BEC3CB91B6B23570069660C /* Main */ = {
+		5BEC3CB91B6B23570069660C /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				5BEF8CAE1B8AC52100338752 /* Main */,
@@ -422,6 +415,44 @@
 				5BEB03381B6F0EBD00A9ED0F /* PeopleServer */,
 				5BEB03361B6F0EAE00A9ED0F /* HealthCard */,
 				5BEB03391B6F0EC000A9ED0F /* Option */,
+			);
+			name = MainViewController;
+			sourceTree = "<group>";
+		};
+		5BED6B6A1B967D6D00E4D15A /* HealthData */ = {
+			isa = PBXGroup;
+			children = (
+				5BFA552D1B74481D001AC7E1 /* LineChartView.h */,
+				5BFA552E1B74481D001AC7E1 /* LineChartView.m */,
+				5BE99A541B719B2B0028DD06 /* HealthDataViewController.h */,
+				5BE99A551B719B2B0028DD06 /* HealthDataViewController.m */,
+			);
+			name = HealthData;
+			sourceTree = "<group>";
+		};
+		5BED6B6B1B967D8900E4D15A /* HealthRemind */ = {
+			isa = PBXGroup;
+			children = (
+				5BED6B6D1B967DEC00E4D15A /* Main */,
+				5BED6B6C1B967DAA00E4D15A /* ScheduleOrMessage */,
+			);
+			name = HealthRemind;
+			sourceTree = "<group>";
+		};
+		5BED6B6C1B967DAA00E4D15A /* ScheduleOrMessage */ = {
+			isa = PBXGroup;
+			children = (
+				5BFA55301B745EB2001AC7E1 /* ScheduleViewController.h */,
+				5BFA55311B745EB2001AC7E1 /* ScheduleViewController.m */,
+			);
+			name = ScheduleOrMessage;
+			sourceTree = "<group>";
+		};
+		5BED6B6D1B967DEC00E4D15A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5BE99A571B719B3C0028DD06 /* HealthRemindViewController.h */,
+				5BE99A581B719B3C0028DD06 /* HealthRemindViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -566,6 +597,7 @@
 		5BF5DDF51B69B96D008DAF9D /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				5BFE65931B9A79CB00F01E30 /* Category */,
 				5BCC5B791B8C00C500C0CAB1 /* View */,
 				5BEF8CAD1B8AADF800338752 /* Server */,
 				5BE97E621B7841D600D1000E /* Model */,
@@ -608,10 +640,18 @@
 		5BF5DE221B69C242008DAF9D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5BEC3CB81B6B233D0069660C /* Login */,
-				5BEC3CB91B6B23570069660C /* Main */,
+				5BEC3CB81B6B233D0069660C /* LoginViewController */,
+				5BEC3CB91B6B23570069660C /* MainViewController */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		5BFE65931B9A79CB00F01E30 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				5BCC5B7A1B8C446500C0CAB1 /* NSDictionary */,
+			);
+			name = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

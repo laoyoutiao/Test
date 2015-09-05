@@ -53,7 +53,7 @@
     [_LineView addSubview:lineChartView];
     
     [ServerHealthInfo GetHealthInfopostName:_userinfo.username time:@"2015-08-17" Block:^(NSDictionary *dict){
-        NSLog(@"%@",dict);
+//        NSLog(@"%@",dict);
     }];
 }
 

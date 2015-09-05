@@ -35,7 +35,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
-    NSLog(@"location---%d",status);
+//    NSLog(@"location---%d",status);
     switch (status) {
         case kCLAuthorizationStatusNotDetermined:
             if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {

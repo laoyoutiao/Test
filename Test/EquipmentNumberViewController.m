@@ -70,7 +70,7 @@
         [_videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
         [_videoPreviewLayer setFrame:self.view.layer.bounds];
         [self.view.layer addSublayer:_videoPreviewLayer];
-        
+
         [_captureSession startRunning];
         return YES;
     }
