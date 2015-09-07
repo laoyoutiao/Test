@@ -27,6 +27,7 @@
     [self locationstart];
     [self locationgo_on];
     [self locationend];
+
     // Do any additional setup after loading the view.
 }
 
@@ -84,7 +85,19 @@
     NSLog(@"完成定位");
 }
 
-
+- (void)textLabel:(NSString *)locationstring
+{
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd hh:mm";
+    NSString *time = [formatter stringFromDate:date];
+    
+    UILabel *textLable = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 120, 150, 240, 100)];
+    textLable.text = [NSString stringWithFormat:@"定位时间 : %@\n\n手表位置 : %@",time,locationstring];
+    textLable.numberOfLines = 0;
+    [self.view addSubview:textLable];
+    textLable.backgroundColor = [UIColor whiteColor];
+}
 
 #pragma mark BaiduLocationDelegate
 
@@ -103,6 +116,7 @@
     annotationView.centerOffset = CGPointMake(0, -(annotationView.frame.size.height * 0.5));
     annotationView.annotation = annotation;
     annotationView.canShowCallout = TRUE;
+    annotationView.enabled = NO;
     return annotationView;
 }
 
@@ -119,13 +133,16 @@
         [_mapView addAnnotation:item];
         _mapView.centerCoordinate = result.location;
         
-        NSString* titleStr;
+//        NSString* titleStr;
         NSString* showmeg;
-        titleStr = @"手表位置";
+//        titleStr = @"手表位置";
         showmeg = [NSString stringWithFormat:@"%@",item.title];
         
-        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:titleStr message:showmeg delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
-        [myAlertView show];
+//        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:titleStr message:showmeg delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+//        [myAlertView show];
+        
+        [self textLabel:showmeg];
+
     }
 }
 

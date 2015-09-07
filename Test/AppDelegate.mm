@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "EquipmentBindingViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <Photos/Photos.h>
 
 @interface AppDelegate () <UISplitViewControllerDelegate,CLLocationManagerDelegate>
 @property(strong, nonatomic) CLLocationManager *locationManager;

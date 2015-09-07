@@ -8,15 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HotWheelsDelegate
+
+@required
+
+- (UIColor *)setbackcolor;
+- (UIColor *)setwheelcolor;
+
+@end
+
 @interface HotWheelsOfFrittersView : UIView
-@property CGFloat interval;
-@property NSInteger backcolorRed;
-@property NSInteger backcolorGreen;
-@property NSInteger backcolorBlue;
-@property CGFloat backAlpha;
-@property NSInteger wheelcolorRed;
-@property NSInteger wheelcolorGreen;
-@property NSInteger wheelcolorBlue;
-- (void)start;
+@property (strong, nonatomic) id<HotWheelsDelegate> delegate;
+@property (nonatomic) CGFloat interval; //转速
+@property (nonatomic) CGFloat backAlpha; //背景透明
+- (void)start; 
 - (void)stop;
 @end

@@ -9,10 +9,16 @@
 #import "HotWheelsOfFrittersView.h"
 
 @interface HotWheelsOfFrittersView()
-@property NSInteger cyclenum;
-@property CGContextRef contextline;
-@property CGContextRef context;
-@property NSTimer *time;
+@property (nonatomic) NSInteger cyclenum;
+@property (nonatomic) CGContextRef contextline;
+@property (nonatomic) CGContextRef context;
+@property (nonatomic) NSTimer *time;
+@property (nonatomic) NSInteger backcolorRed;
+@property (nonatomic) NSInteger backcolorGreen;
+@property (nonatomic) NSInteger backcolorBlue;
+@property (nonatomic) NSInteger wheelcolorRed;
+@property (nonatomic) NSInteger wheelcolorGreen;
+@property (nonatomic) NSInteger wheelcolorBlue;
 @end
 
 @implementation HotWheelsOfFrittersView
@@ -85,13 +91,21 @@
 
 - (void)setLineX:(CGFloat)x Y:(CGFloat)y ToX:(CGFloat)tx ToY:(CGFloat)ty Alpha:(CGFloat)alpha
 {
-    _contextline = UIGraphicsGetCurrentContext();
-    CGContextBeginPath(_contextline);
-    if (!_wheelcolorRed || !_wheelcolorBlue || !_wheelcolorGreen) {
+    UIColor *color = [_delegate setwheelcolor];
+    if (!color) {
+        const CGFloat *components = CGColorGetComponents(color.CGColor);
+        _wheelcolorRed = components[0];
+        _wheelcolorGreen = components[1];
+        _wheelcolorBlue = components[2];
+    }else
+    {
         _wheelcolorGreen = 0;
         _wheelcolorRed = 0;
         _wheelcolorBlue = 0;
     }
+
+    _contextline = UIGraphicsGetCurrentContext();
+    CGContextBeginPath(_contextline);
     CGContextSetRGBStrokeColor(_contextline, _wheelcolorRed, _wheelcolorGreen, _wheelcolorBlue, alpha);
     CGContextSetLineWidth(_contextline, self.bounds.size.width / 13);
     CGContextMoveToPoint(_contextline, x, y);
@@ -104,18 +118,27 @@
 
 - (void)setCircle
 {
-    _context = UIGraphicsGetCurrentContext();
-    float radius = self.bounds.size.width / 2;
-    CGRect Rect = self.bounds;
-    CGContextBeginPath(_context);
-    if (!_backAlpha) {
-        _backAlpha = 0;
-    }
-    if (!_backcolorRed || !_backcolorBlue || !_backcolorGreen) {
+    
+    UIColor *color = [_delegate setbackcolor];
+    if (!color) {
+        const CGFloat *components = CGColorGetComponents(color.CGColor);
+        _backcolorRed = components[0];
+        _backcolorGreen = components[1];
+        _backcolorBlue = components[2];
+    }else
+    {
         _backcolorGreen = 0;
         _backcolorRed = 0;
         _backcolorBlue = 0;
     }
+    if (!_backAlpha) {
+        _backAlpha = 0;
+    }
+    
+    _context = UIGraphicsGetCurrentContext();
+    float radius = self.bounds.size.width / 2;
+    CGRect Rect = self.bounds;
+    CGContextBeginPath(_context);
     CGContextSetRGBFillColor(_context, _backcolorRed, _backcolorGreen, _backcolorBlue, _backAlpha);
     CGContextMoveToPoint(_context, CGRectGetMinX(Rect) + radius, CGRectGetMinY(Rect));
     CGContextAddArc(_context, CGRectGetMaxX(Rect) - radius, CGRectGetMaxX(Rect) + radius, radius, 33 * (float)M_PI_2, 0, 0);
