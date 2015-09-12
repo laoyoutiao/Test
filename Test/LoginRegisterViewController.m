@@ -11,9 +11,11 @@
 #import "ServerLoginOrRegister.h"
 #import "RegistViewController.h"
 #import "HotWheelsOfFrittersView.h"
+#import "UserInfo.h"
 
 @interface LoginRegisterViewController ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *NavigationItem;
+@property (weak, nonatomic) IBOutlet UIImageView *HeadImageView;
 @property (weak, nonatomic) IBOutlet UIButton *LoginButton;
 @property (weak, nonatomic) IBOutlet UITextField *UserNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *PassWordTextField;
@@ -21,6 +23,7 @@
 @property (strong, nonatomic) UIView *hotwheelview;
 @property (assign, nonatomic) NSInteger logintime;
 @property (strong, nonatomic) NSDictionary *logindict;
+@property (strong, nonatomic) UserInfo *userinfo;
 @end
 
 @implementation LoginRegisterViewController
@@ -28,16 +31,45 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UserInfo"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"UserInfo"];
 
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self ReviseNavigation];
+    
+    [self SetHeadImageView];
+    
+    [self SetUserText];
     // Do any additional setup after loading the view.
 }
 
-- (IBAction)ClickLoginButton:(id)sender {
+#pragma mark View
+
+- (void)ReviseNavigation
+{
+    self.NavigationItem.title = @"登录";
+}
+
+- (void)SetHeadImageView
+{
+    UIImage *image = [UIImage imageWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"HeadImage"]];
+    _HeadImageView.image = image;
+    _HeadImageView.layer.masksToBounds = YES;
+    _HeadImageView.layer.cornerRadius = 50;
+    _HeadImageView.layer.borderWidth = 0.5;
+    _HeadImageView.layer.borderColor = [UIColor grayColor].CGColor;
     
+}
+
+- (void)SetUserText
+{
+    _UserNameTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserName"];
+    _PassWordTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserPassword"];
+}
+
+#pragma mark Respond Events
+
+- (IBAction)ClickLoginButton:(id)sender {
     if (![_UserNameTextField.text isEqualToString:@""] && ![_PassWordTextField.text isEqualToString:@""]) {
         [[ServerLoginOrRegister sharedInstance] LoginpostUsername:_UserNameTextField.text Password:_PassWordTextField.text];
         [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getdict:) userInfo:nil repeats:YES];
@@ -53,14 +85,13 @@
         }
     }else if([_UserNameTextField.text isEqualToString:@""] || [_PassWordTextField.text isEqualToString:@""])
     {
-        UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"请输入账号/密码" message:@"错误:账号或密码为空" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-        [alterview show];
+        NSString *str = @"请输入账号/密码";
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:str message:@"错误:账号或密码为空" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alertview show];
     }else
     {
-        UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"登录失败" message:@"未知错误" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-        [alterview show];
-        
-
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"登录失败" message:@"未知错误" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alertview show];
     }
     
 }
@@ -71,11 +102,17 @@
     _logindict = [[ServerLoginOrRegister sharedInstance] ResultLoginDictionary];
     if ([_logindict count]) {
         if ([[_logindict objectForKey:@"result"] isEqualToString:@"true"]) {
+            NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfo"];
+            _userinfo = [[UserInfo alloc] initWithDictionary:dict];
+            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080/SmartPlatformWeb/%@",_userinfo.head]]];
+            [[NSUserDefaults standardUserDefaults] setObject:imagedata forKey:@"HeadImage"];
             EquipmentBindingViewController *equipbingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EquipmentBindingView"];
             [self.navigationController pushViewController:equipbingViewController animated:YES];
-            UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"登录成功" message:@"欢迎你使用本公司产品" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alterview show];
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"登录成功" message:@"欢迎你使用本公司产品" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            [alertview show];
             [timer invalidate];
+            [[NSUserDefaults standardUserDefaults] setObject:_UserNameTextField.text forKey:@"UserName"];
+            [[NSUserDefaults standardUserDefaults] setObject:_PassWordTextField.text forKey:@"UserPassword"];
             [_hotwheels stop];
             [_hotwheelview removeFromSuperview];
             _hotwheelview = nil;
@@ -84,16 +121,16 @@
             [_hotwheels stop];
             [_hotwheelview removeFromSuperview];
             NSString *error = [_logindict objectForKey:@"message"];
-            UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"登录失败" message:error delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alterview show];
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"登录失败" message:error delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            [alertview show];
             [timer invalidate];
             _hotwheelview = nil;
         }else
         {
             [_hotwheels stop];
             [_hotwheelview removeFromSuperview];
-            UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"登录失败" message:@"未知错误" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alterview show];
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"登录失败" message:@"未知错误" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            [alertview show];
             [timer invalidate];
             _hotwheelview = nil;
         }
@@ -101,8 +138,8 @@
     {
         NSLog(@"%ld",_logintime);
         if (_logintime >= 20) {
-            UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"登录失败" message:@"连接超时" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alterview show];
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"登录失败" message:@"连接超时" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            [alertview show];
             [timer invalidate];
             [_hotwheels stop];
             [_hotwheelview removeFromSuperview];
@@ -116,11 +153,7 @@
     [self.navigationController pushViewController:registViewController animated:YES];
 }
 
-- (void)ReviseNavigation
-{
-    self.NavigationItem.title = @"登录";
-}
-
+#pragma mark ChangeView
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

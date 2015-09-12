@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self ReviseNavigation];
     [self setImage];
     [self SetLabelText];

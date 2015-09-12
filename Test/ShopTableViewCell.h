@@ -12,9 +12,10 @@
 @interface ShopTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) ShopInfo *info;
-
-- (CGFloat)HeighTofCell;
-
 - (void)InfoOfCell:(ShopInfo *)info;
-
+@property (weak, nonatomic) IBOutlet UILabel *NameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *AddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *DistanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *PriceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *ImageView;
 @end

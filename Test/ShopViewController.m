@@ -13,7 +13,7 @@
 #import "ShopMessageViewController.h"
 #import "ShopTableViewCell.h"
 
-@interface ShopViewController ()
+@interface ShopViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *TabbarView;
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
@@ -25,6 +25,7 @@
 @property (assign, nonatomic) NSInteger ShopMessageTime;
 @property (strong, nonatomic) NSMutableDictionary *ShopMessageDict;
 @property (strong, nonatomic) NSArray *ShopMessageDictArray;
+@property (nonatomic) BOOL setheight;
 
 @end
 
@@ -34,7 +35,7 @@
     [super viewDidLoad];
     
     _ShopMessageDict = [[NSMutableDictionary alloc] init];
-
+    
     [self ReviseNavigation];
     [self setTabbarView];
     [self message];
@@ -67,6 +68,8 @@
 - (void)setTableView
 {
     _TableView.hidden = YES;
+    _TableView.estimatedRowHeight = 44;
+    _TableView.rowHeight = UITableViewAutomaticDimension;
     _HotWheelsView = [[HotWheelsOfFrittersView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 40, [UIScreen mainScreen].bounds.size.height / 2 - 40, 80, 80)];
     _HotWheelsView.interval = 0.1;
     [_HotWheelsView start];
@@ -107,7 +110,6 @@
 {
     _cell = [tableView dequeueReusableCellWithIdentifier:@"ShopTableViewCell" forIndexPath:indexPath];
     [_cell InfoOfCell:[_ShopMessageDictArray objectAtIndex:indexPath.row]];
-    tableView.rowHeight = [_cell HeighTofCell];
     return _cell;
 }
 
@@ -124,8 +126,8 @@
     return 1;
 }
 
-#pragma mark Respond Event
 
+#pragma mark Respond Event
 
 - (void)clickMapSecrch:(UIButton *)button
 {
@@ -146,19 +148,25 @@
 //            NSLog(@"%@",_ShopMessageDictArray);
             [_TableView setHidden:NO];
             [_TableView reloadData];
+            [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(reloadtableview) userInfo:nil repeats:NO];
         }else
         {
-            UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:[_ShopMessageDict objectForKey:@"message"] delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alterview show];
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:[_ShopMessageDict objectForKey:@"message"] delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            [alertview show];
         }
     }
     if (_ShopMessageTime > 20) {
         [_HotWheelsView stop];
         [_HotWheelsView removeFromSuperview];
-        UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:@"网络连接超时" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-        [alterview show];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:@"网络连接超时" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alertview show];
         [timer invalidate];
     }
+}
+
+- (void)reloadtableview
+{
+    [_TableView reloadData];
 }
 
 /*

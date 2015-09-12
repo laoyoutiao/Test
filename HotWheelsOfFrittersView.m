@@ -92,7 +92,7 @@
 - (void)setLineX:(CGFloat)x Y:(CGFloat)y ToX:(CGFloat)tx ToY:(CGFloat)ty Alpha:(CGFloat)alpha
 {
     UIColor *color = [_delegate setwheelcolor];
-    if (!color) {
+    if (color) {
         const CGFloat *components = CGColorGetComponents(color.CGColor);
         _wheelcolorRed = components[0];
         _wheelcolorGreen = components[1];
@@ -120,7 +120,7 @@
 {
     
     UIColor *color = [_delegate setbackcolor];
-    if (!color) {
+    if (color) {
         const CGFloat *components = CGColorGetComponents(color.CGColor);
         _backcolorRed = components[0];
         _backcolorGreen = components[1];

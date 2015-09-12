@@ -58,7 +58,7 @@
     switch (indexPath.row) {
         case 0:
         case 1:
-            return 70;
+            return 80;
             break;
             
         case 2:
@@ -82,9 +82,13 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"OptionCellFirst" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (indexPath.row == 0) {
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080/SmartPlatformWeb/%@",_userinfo.head]]]];
+            UIImage *image = [UIImage imageWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"HeadImage"]];
             UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(cell.bounds.size.width - (cell.bounds.size.width - 30) / 4, 10, (cell.bounds.size.width - 70) / 4, cell.bounds.size.height - 20)];
             [button setImage:image forState:UIControlStateNormal];
+            button.layer.masksToBounds = YES;
+            button.layer.borderWidth = 0.5;
+            button.layer.cornerRadius = (cell.bounds.size.height - 20) / 2;
+            button.layer.borderColor = [UIColor grayColor].CGColor;
             [button addTarget:self action:@selector(clickHeadImage:) forControlEvents:UIControlEventTouchUpInside];
             button.backgroundColor = [UIColor redColor];
             [cell addSubview:button];
@@ -104,6 +108,10 @@
                 UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(20 + i * (cell.bounds.size.width - 30) / 4, 10, (cell.bounds.size.width - 70) / 4, cell.bounds.size.height - 20)];
                 button.backgroundColor = [UIColor yellowColor];
                 [cell addSubview:button];
+                button.layer.masksToBounds = YES;
+                button.layer.borderWidth = 0.5;
+                button.layer.cornerRadius = (cell.bounds.size.height - 20) / 2;
+                button.layer.borderColor = [UIColor grayColor].CGColor;
                 [button addTarget:self action:@selector(clickInfoButton:) forControlEvents:UIControlEventTouchUpInside];
             }
         }

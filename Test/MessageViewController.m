@@ -73,15 +73,15 @@
             [_TableView reloadData];
         }else
         {
-            UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:[_BookMessageDict objectForKey:@"message"] delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alterview show];
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:[_BookMessageDict objectForKey:@"message"] delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            [alertview show];
         }
     }
     if (_BookMessageTime > 20) {
         [_HotWheelsView stop];
         [_HotWheelsView removeFromSuperview];
-        UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:@"网络连接超时" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-        [alterview show];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:@"网络连接超时" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alertview show];
         [timer invalidate];
     }
 }

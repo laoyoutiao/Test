@@ -16,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *HeadImageView;
 @property (weak, nonatomic) IBOutlet UILabel *AddressLabel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HeightOfAddressLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HeightOfNameLabel;
 @end
 
 @implementation SocialWorkerTableViewCell
@@ -31,10 +29,6 @@
     // Configure the view for the selected state
 }
 
-- (CGFloat)HeighTofCell
-{
-    return _HeightOfAddressLabel.constant + _HeightOfNameLabel.constant * 4 + 40;
-}
 
 - (void)InfoOfCell:(SocialWorkerInfo *)info
 {
@@ -43,16 +37,6 @@
     _AreaLabel.text = info.area;
     _AddressLabel.text = info.address;
     _LevelLabel.text = [NSString stringWithFormat:@"%ld",info.score];
-    
-    if (_AddressLabel.text.length > 32) {
-        _HeightOfAddressLabel.constant = 52;
-    }else if(_AddressLabel.text.length > 16)
-    {
-        _HeightOfAddressLabel.constant = 38;
-    }else
-    {
-        _HeightOfAddressLabel.constant = 20;
-    }
 }
 
 @end

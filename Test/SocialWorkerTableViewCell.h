@@ -10,6 +10,5 @@
 #import "SocialWorkerInfo.h"
 
 @interface SocialWorkerTableViewCell : UITableViewCell
-- (CGFloat)HeighTofCell;
 - (void)InfoOfCell:(SocialWorkerInfo *)info;
 @end

@@ -8,11 +8,14 @@
 
 #import "GpsLocateViewController.h"
 #import <BaiduMapAPI/BMapKit.h>
+#import "ServerUserLocation.h"
+#import "UserInfo.h"
 
-@interface GpsLocateViewController ()<BMKMapViewDelegate,BMKGeoCodeSearchDelegate>
+@interface GpsLocateViewController ()<BMKMapViewDelegate,BMKGeoCodeSearchDelegate,UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 @property (strong, nonatomic) BMKGeoCodeSearch *geocodesearch;
+@property (strong, nonatomic) UserInfo *userinfo;
 @end
 
 @implementation GpsLocateViewController
@@ -25,8 +28,6 @@
     
     [self ReviseNavigation];
     [self locationstart];
-    [self locationgo_on];
-    [self locationend];
 
     // Do any additional setup after loading the view.
 }
@@ -55,22 +56,37 @@
     self.title = @"GPS定位";
 }
 
-#pragma mark Responer Event
+#pragma mark Location Responer Event
 
 - (void)locationstart
 {
-    CLLocationCoordinate2D pt = (CLLocationCoordinate2D){23.068903, 113.060738};
-    BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];
-    reverseGeocodeSearchOption.reverseGeoPoint = pt;
-    BOOL flag = [_geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
-    if(flag)
-    {
-        NSLog(@"反geo检索发送成功");
-    }
-    else
-    {
-        NSLog(@"反geo检索发送失败");
-    }
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfo"];
+    _userinfo = [[UserInfo alloc] initWithDictionary:dict];
+    __weak typeof(self) weakself = self;
+    [ServerUserLocation GetLocationpostName:_userinfo.username Block:^(CLLocationCoordinate2D location){
+        NSLog(@"%f,%f",location.latitude,location.longitude);
+        CLLocationCoordinate2D pt;
+        if (!location.latitude && !location.longitude) {
+//            pt = (CLLocationCoordinate2D){23.068903, 113.060738};
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"未开启监控功能" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil];
+            [alertview show];
+        }else
+        {
+            pt = (CLLocationCoordinate2D){location.latitude, location.longitude};
+            BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];
+            reverseGeocodeSearchOption.reverseGeoPoint = pt;
+            BOOL flag = [_geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
+            if(!flag || location.latitude == -1 || location.longitude == -1)
+            {
+                UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"未知原因" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"重新加载",nil];
+                [alertview show];
+            }else
+            {
+                [weakself locationgo_on];
+                [weakself locationend];
+            }
+        }
+    }];
 }
 
 - (void)locationgo_on
@@ -85,18 +101,36 @@
     NSLog(@"完成定位");
 }
 
-- (void)textLabel:(NSString *)locationstring
+//- (void)textLabel:(NSString *)locationstring
+//{
+//    NSDate *date = [NSDate date];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    formatter.dateFormat = @"yyyy-MM-dd hh:mm";
+//    NSString *time = [formatter stringFromDate:date];
+//    
+//    UILabel *textLable = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 120, 150, 240, 100)];
+//    textLable.text = [NSString stringWithFormat:@"定位时间 : %@\n\n手表位置 : %@",time,locationstring];
+//    textLable.numberOfLines = 0;
+//    [self.view addSubview:textLable];
+//    textLable.backgroundColor = [UIColor whiteColor];
+//}
+
+#pragma mark Clickalertview
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSDate *date = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyy-MM-dd hh:mm";
-    NSString *time = [formatter stringFromDate:date];
-    
-    UILabel *textLable = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 120, 150, 240, 100)];
-    textLable.text = [NSString stringWithFormat:@"定位时间 : %@\n\n手表位置 : %@",time,locationstring];
-    textLable.numberOfLines = 0;
-    [self.view addSubview:textLable];
-    textLable.backgroundColor = [UIColor whiteColor];
+    switch (buttonIndex) {
+        case 0:
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            break;
+            
+        case 1:
+            [self locationstart];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark BaiduLocationDelegate
@@ -112,11 +146,12 @@
         ((BMKPinAnnotationView*)annotationView).pinColor = BMKPinAnnotationColorRed;
         ((BMKPinAnnotationView*)annotationView).animatesDrop = YES;
     }
-    
+//    annotationView.image = nil;
     annotationView.centerOffset = CGPointMake(0, -(annotationView.frame.size.height * 0.5));
     annotationView.annotation = annotation;
     annotationView.canShowCallout = TRUE;
-    annotationView.enabled = NO;
+    annotationView.enabled = YES;
+    [annotationView setSelected:YES];
     return annotationView;
 }
 
@@ -129,19 +164,24 @@
     if (error == 0) {
         BMKPointAnnotation* item = [[BMKPointAnnotation alloc]init];
         item.coordinate = result.location;
-        item.title = result.address;
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd hh:mm";
+        NSString *time = [formatter stringFromDate:date];
+        item.title = [NSString stringWithFormat:@"定位时间 : %@",time];
+        item.subtitle = [NSString stringWithFormat:@"手表位置 : %@",result.address];
         [_mapView addAnnotation:item];
         _mapView.centerCoordinate = result.location;
         
 //        NSString* titleStr;
-        NSString* showmeg;
+//        NSString* showmeg;
 //        titleStr = @"手表位置";
-        showmeg = [NSString stringWithFormat:@"%@",item.title];
+//        showmeg = [NSString stringWithFormat:@"%@",item.title];
         
 //        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:titleStr message:showmeg delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
 //        [myAlertView show];
         
-        [self textLabel:showmeg];
+//        [self textLabel:showmeg];
 
     }
 }

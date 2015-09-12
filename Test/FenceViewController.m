@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self ReviseNavigation];
     // Do any additional setup after loading the view.
 }
 
@@ -28,7 +29,7 @@
 {
     //    [self.navigationController setNavigationBarHidden:YES];
     [self.navigationController.navigationBar setBarTintColor:[UIColor grayColor]];
-    self.title = @"GPS定位";
+    self.title = @"电子围栏";
 }
 
 /*

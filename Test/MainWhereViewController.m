@@ -9,7 +9,7 @@
 #import "MainWhereViewController.h"
 #import "NavigationController.h"
 
-@interface MainWhereViewController ()
+@interface MainWhereViewController ()<UITabBarControllerDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *NavigationItem;
 @end
 
@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self ReviseNavigation];
-
+    
     // Do any additional setup after loading the view.
 }
 

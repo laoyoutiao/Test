@@ -8,6 +8,7 @@
 
 #import "EquipmentNumberViewController.h"
 #import "MainWhereViewController.h"
+#import "MainOptionViewController.h"
 #import "TabBarController.h"
 #import <AVFoundation/AVFoundation.h>
 
@@ -34,8 +35,8 @@
 - (IBAction)ClickNextButton:(id)sender {
     TabBarController *mainViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBar"];
 //    [self.navigationController pushViewController:mainViewController animated:YES];
-    
     [self presentViewController:mainViewController animated:YES completion:nil];
+    mainViewController.selectedIndex = 3;
 
 }
 

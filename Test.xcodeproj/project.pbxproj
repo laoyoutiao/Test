@@ -50,6 +50,7 @@
 		5BEC94931B7AD19A0014AC7D /* ServerHeadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC94921B7AD19A0014AC7D /* ServerHeadImage.m */; };
 		5BEC94961B7AE1CD0014AC7D /* ServerUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC94951B7AE1CD0014AC7D /* ServerUserInfo.m */; };
 		5BECE3491B8EAD1800F291E1 /* SocialWorkerCommentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BECE3481B8EAD1800F291E1 /* SocialWorkerCommentInfo.m */; };
+		5BED3B301BA3D9B900D5F54B /* ServerUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3B2F1BA3D9B900D5F54B /* ServerUserLocation.m */; };
 		5BED49E61B7C4754002F8AF0 /* ServerShopMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED49E51B7C4754002F8AF0 /* ServerShopMessage.m */; };
 		5BEEF9C11B6C726E00FA7342 /* MainServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEEF9C01B6C726E00FA7342 /* MainServerViewController.m */; };
 		5BEEF9C41B6C728300FA7342 /* MainCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEEF9C31B6C728300FA7342 /* MainCardViewController.m */; };
@@ -174,6 +175,9 @@
 		5BEC94951B7AE1CD0014AC7D /* ServerUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerUserInfo.m; sourceTree = "<group>"; };
 		5BECE3471B8EAD1800F291E1 /* SocialWorkerCommentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialWorkerCommentInfo.h; sourceTree = "<group>"; };
 		5BECE3481B8EAD1800F291E1 /* SocialWorkerCommentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialWorkerCommentInfo.m; sourceTree = "<group>"; };
+		5BED3B2E1BA3D9B900D5F54B /* ServerUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerUserLocation.h; sourceTree = "<group>"; };
+		5BED3B2F1BA3D9B900D5F54B /* ServerUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerUserLocation.m; sourceTree = "<group>"; };
+		5BED3B311BA3FD8800D5F54B /* UserDefaultPlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultPlist.h; sourceTree = "<group>"; };
 		5BED49E41B7C4754002F8AF0 /* ServerShopMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerShopMessage.h; sourceTree = "<group>"; };
 		5BED49E51B7C4754002F8AF0 /* ServerShopMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerShopMessage.m; sourceTree = "<group>"; };
 		5BEEF9BF1B6C726E00FA7342 /* MainServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainServerViewController.h; sourceTree = "<group>"; };
@@ -482,6 +486,8 @@
 				5BEF8CB01B8AC58400338752 /* ServerSocialWorkerMessage.m */,
 				5BF26E401B952FC40068986C /* ServerHealthInfo.h */,
 				5BF26E411B952FC40068986C /* ServerHealthInfo.m */,
+				5BED3B2E1BA3D9B900D5F54B /* ServerUserLocation.h */,
+				5BED3B2F1BA3D9B900D5F54B /* ServerUserLocation.m */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -604,6 +610,7 @@
 				5BF5DE221B69C242008DAF9D /* Controller */,
 				5BF5DDFA1B69B96D008DAF9D /* AppDelegate.h */,
 				5BF5DDFB1B69B96D008DAF9D /* AppDelegate.mm */,
+				5BED3B311BA3FD8800D5F54B /* UserDefaultPlist.h */,
 				5BF5DE061B69B96D008DAF9D /* Images.xcassets */,
 				5BF5DE081B69B96D008DAF9D /* LaunchScreen.xib */,
 				5BF5DDF61B69B96D008DAF9D /* Supporting Files */,
@@ -761,6 +768,7 @@
 				5BECE3491B8EAD1800F291E1 /* SocialWorkerCommentInfo.m in Sources */,
 				5BE99A591B719B3C0028DD06 /* HealthRemindViewController.m in Sources */,
 				5BEB03421B6F10FC00A9ED0F /* ThingViewController.m in Sources */,
+				5BED3B301BA3D9B900D5F54B /* ServerUserLocation.m in Sources */,
 				5BE97E5E1B78408E00D1000E /* AFURLConnectionOperation.m in Sources */,
 				5BE97E611B78408E00D1000E /* AFURLSessionManager.m in Sources */,
 				5BE97E5F1B78408E00D1000E /* AFURLRequestSerialization.m in Sources */,

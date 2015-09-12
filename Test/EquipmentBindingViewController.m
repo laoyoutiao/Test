@@ -8,6 +8,7 @@
 
 #import "EquipmentBindingViewController.h"
 #import "EquipmentNumberViewController.h"
+#import "NavigationController.h"
 
 @interface EquipmentBindingViewController ()
 
@@ -31,9 +32,9 @@
     
 }
 - (IBAction)ClickSwitchAccountButton:(id)sender {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    
+
+    NavigationController *loginregisterviewcontroller = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginRegisterViewNavigation"];
+    [self presentViewController:loginregisterviewcontroller animated:YES completion:nil];
 }
 
 

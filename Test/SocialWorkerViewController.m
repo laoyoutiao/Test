@@ -104,10 +104,11 @@
 //            NSLog(@"%@",_WorkerMessageDict);
             [_TableView setHidden:NO];
             [_TableView reloadData];
+            [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(reloadtableview) userInfo:nil repeats:NO];
         }else
         {
-            UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:[_WorkerMessageDict objectForKey:@"message"] delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alterview show];
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:[_WorkerMessageDict objectForKey:@"message"] delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            [alertview show];
             if (!_IsFirst) {
                 [_TableView setHidden:NO];
             }
@@ -117,14 +118,19 @@
     if (_WorkerMessageTime > 20) {
         [_HotWheelsView stop];
         [_HotWheelsView removeFromSuperview];
-        UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:@"网络连接超时" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-        [alterview show];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"获取信息失败" message:@"网络连接超时" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alertview show];
         [timer invalidate];
         if (!_IsFirst) {
             [_TableView setHidden:NO];
         }
         _IsFirst = NO;
     }
+}
+
+- (void)reloadtableview
+{
+    [_TableView reloadData];
 }
 
 
@@ -154,7 +160,8 @@
 {
     _cell = [tableView dequeueReusableCellWithIdentifier:@"SocialWorkerTableViewCell" forIndexPath:indexPath];
     [_cell InfoOfCell:[_WorkerMessageDictArray objectAtIndex:indexPath.row]];
-    tableView.rowHeight = [_cell HeighTofCell];
+    tableView.estimatedRowHeight = 44;
+    tableView.rowHeight = UITableViewAutomaticDimension;
     return _cell;
 }
 

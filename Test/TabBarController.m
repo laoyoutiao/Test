@@ -8,7 +8,7 @@
 
 #import "TabBarController.h"
 
-@interface TabBarController ()
+@interface TabBarController ()<UITabBarControllerDelegate>
 
 @end
 
@@ -38,7 +38,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 /*

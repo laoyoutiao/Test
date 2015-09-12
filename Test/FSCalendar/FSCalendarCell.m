@@ -72,9 +72,9 @@
         [self.contentView.layer addSublayer:imageLayer];
         self.imageLayer = imageLayer;
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 3, self.bounds.size.width, 0.5)];
-        view.backgroundColor = [UIColor grayColor];
-        [self.contentView addSubview:view];
+//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 3, self.bounds.size.width, 0.5)];
+//        view.backgroundColor = [UIColor grayColor];
+//        [self.contentView addSubview:view];
     }
     return self;
 }
