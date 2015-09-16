@@ -37,7 +37,7 @@
 {
 //    NSString *str = @"http://wwww.chancheng.gov.cn/chancheng/in0602/rzpt_lm.shtml";
     NSString *str = @"http://wwww.baidu.com";
-    NSURL *url = [[NSURL alloc] initWithString:str];
+    NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_WebView loadRequest:request];
 }
@@ -49,7 +49,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
+    NSLog(@"%@",[webView stringByEvaluatingJavaScriptFromString:@"document.title"]);
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error

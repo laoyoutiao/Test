@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-typedef void(^LocationBlock)(CLLocationCoordinate2D locationblock);
+typedef void(^LocationBlock)(NSDictionary *locationblock);
 
 @interface ServerUserLocation : NSObject
 

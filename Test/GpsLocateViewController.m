@@ -63,28 +63,22 @@
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfo"];
     _userinfo = [[UserInfo alloc] initWithDictionary:dict];
     __weak typeof(self) weakself = self;
-    [ServerUserLocation GetLocationpostName:_userinfo.username Block:^(CLLocationCoordinate2D location){
-        NSLog(@"%f,%f",location.latitude,location.longitude);
+    [ServerUserLocation GetLocationpostName:_userinfo.username Block:^(NSDictionary *locationdict){
+//        NSLog(@"%@",locationdict);
         CLLocationCoordinate2D pt;
-        if (!location.latitude && !location.longitude) {
-//            pt = (CLLocationCoordinate2D){23.068903, 113.060738};
-            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"未开启监控功能" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil];
+        if ([[locationdict objectForKey:@"result"] isEqualToString:@"false"]) {
+            NSString *message = [locationdict objectForKey:@"message"];
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"定位失败" message:message delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"重新加载",nil];
             [alertview show];
         }else
         {
-            pt = (CLLocationCoordinate2D){location.latitude, location.longitude};
+            float latitude = [[locationdict objectForKey:@"latiude"] floatValue];
+            float longitude = [[locationdict objectForKey:@"longitude"] floatValue];
+            pt = (CLLocationCoordinate2D){latitude,longitude};
             BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];
             reverseGeocodeSearchOption.reverseGeoPoint = pt;
-            BOOL flag = [_geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
-            if(!flag || location.latitude == -1 || location.longitude == -1)
-            {
-                UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"未知原因" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"重新加载",nil];
-                [alertview show];
-            }else
-            {
-                [weakself locationgo_on];
-                [weakself locationend];
-            }
+            [weakself locationgo_on];
+            [weakself locationend];
         }
     }];
 }

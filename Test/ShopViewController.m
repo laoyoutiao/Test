@@ -68,7 +68,7 @@
 - (void)setTableView
 {
     _TableView.hidden = YES;
-    _TableView.estimatedRowHeight = 44;
+    _TableView.estimatedRowHeight = 43.5;
     _TableView.rowHeight = UITableViewAutomaticDimension;
     _HotWheelsView = [[HotWheelsOfFrittersView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 40, [UIScreen mainScreen].bounds.size.height / 2 - 40, 80, 80)];
     _HotWheelsView.interval = 0.1;
@@ -110,6 +110,7 @@
 {
     _cell = [tableView dequeueReusableCellWithIdentifier:@"ShopTableViewCell" forIndexPath:indexPath];
     [_cell InfoOfCell:[_ShopMessageDictArray objectAtIndex:indexPath.row]];
+    tableView.estimatedRowHeight = 120;
     return _cell;
 }
 

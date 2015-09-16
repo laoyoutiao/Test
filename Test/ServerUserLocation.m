@@ -13,28 +13,35 @@
 
 + (void)GetLocationpostName:(NSString *)username Block:(LocationBlock)block
 {
-    __block CLLocationCoordinate2D location;
+    __block NSDictionary *resultlocation;
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"operate": @"get",
                                  @"username": username};
     
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserLocation" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"json-->%@",responseObject);
-//        NSLog(@"%@",[responseObject objectForKey:@"message"]);
-//        if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
-//            NSMutableDictionary *mutabledict = [[NSMutableDictionary alloc] init];
-//            [mutabledict setObject:@"true" forKey:@"result"];
-//            NSArray *array = [responseObject objectForKey:@"datas"];
-//        }else
-//        {
-            location = (CLLocationCoordinate2D){0,0};
-//        }
-        block(location);
+        NSLog(@"json-->%@",responseObject);
+        NSLog(@"%@",[responseObject objectForKey:@"message"]);
+        if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
+            NSMutableDictionary *mutabledict = [[NSMutableDictionary alloc] init];
+            [mutabledict setObject:@"true" forKey:@"result"];
+            CLLocation *location = [responseObject objectForKey:@"datas"];
+            NSString *longitude = [NSString stringWithFormat:@"%f",location.coordinate.longitude];
+            NSString *latiude = [NSString stringWithFormat:@"%f",location.coordinate.latitude];
+            [mutabledict setObject:longitude forKey:@"longitude"];
+            [mutabledict setObject:latiude forKey:@"latiude"];
+            resultlocation = mutabledict;
+        }else
+        {
+            resultlocation = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"],@"latiude":@"2"};
+        }
+        NSLog(@"%@",resultlocation);
+        block(resultlocation);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        location = (CLLocationCoordinate2D){-1,-1};
-        block(location);
+        resultlocation = @{@"result": @"false", @"message": @"未知错误"};
+        block(resultlocation);
     }];
 
 }
+
 
 @end

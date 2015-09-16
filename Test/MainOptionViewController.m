@@ -10,6 +10,8 @@
 #import "ServerHeadImage.h"
 #import "LoginRegisterViewController.h"
 #import "UserInfo.h"
+#import "ChangeUserInfoView.h"
+#import "EquipmentNumberViewController.h"
 
 @interface MainOptionViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -108,6 +110,7 @@
                 UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(20 + i * (cell.bounds.size.width - 30) / 4, 10, (cell.bounds.size.width - 70) / 4, cell.bounds.size.height - 20)];
                 button.backgroundColor = [UIColor yellowColor];
                 [cell addSubview:button];
+                button.tag = indexPath.row + 100 + i;
                 button.layer.masksToBounds = YES;
                 button.layer.borderWidth = 0.5;
                 button.layer.cornerRadius = (cell.bounds.size.height - 20) / 2;
@@ -142,6 +145,10 @@
     {
         LoginRegisterViewController *loginview = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginRegisterViewNavigation"];
         [self presentViewController:loginview animated:YES completion:nil];
+    }else if (indexPath.row == 2)
+    {
+        EquipmentNumberViewController *eqipmentview = [self.storyboard instantiateViewControllerWithIdentifier:@"EquipmentNumberView"];
+        [self.navigationController pushViewController:eqipmentview animated:YES];
     }
 }
 
@@ -149,7 +156,11 @@
 
 - (void)clickInfoButton:(UIButton *)button
 {
-    
+    if(button.tag == 101)
+    {
+        ChangeUserInfoView *changeuserinfoview = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangeUserInfoView"];
+        [self.navigationController showViewController:changeuserinfoview sender:nil];
+    }
 }
 
 - (void)clickHeadImage:(UIButton *)button

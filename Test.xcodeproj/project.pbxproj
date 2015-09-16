@@ -38,6 +38,7 @@
 		5BEB034B1B6F13EE00A9ED0F /* FenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB034A1B6F13EE00A9ED0F /* FenceViewController.m */; };
 		5BEB034E1B6F140000A9ED0F /* FallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB034D1B6F140000A9ED0F /* FallViewController.m */; };
 		5BEB03511B6F141200A9ED0F /* LocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB03501B6F141200A9ED0F /* LocusViewController.m */; };
+		5BEB0F7A1BA6783700BAAD94 /* ChangeUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB0F791BA6783700BAAD94 /* ChangeUserInfoView.m */; };
 		5BEB199F1B705780007F87C0 /* WorkerMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB199E1B705780007F87C0 /* WorkerMessageViewController.m */; };
 		5BEB19A21B70B861007F87C0 /* SocialWorkerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB19A11B70B861007F87C0 /* SocialWorkerTableViewCell.m */; };
 		5BEC3C921B6AFC020069660C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEC3C911B6AFC020069660C /* CoreMedia.framework */; };
@@ -49,6 +50,8 @@
 		5BEC51551B730C5E00EED09B /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEC51541B730C5E00EED09B /* SpriteKit.framework */; };
 		5BEC94931B7AD19A0014AC7D /* ServerHeadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC94921B7AD19A0014AC7D /* ServerHeadImage.m */; };
 		5BEC94961B7AE1CD0014AC7D /* ServerUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC94951B7AE1CD0014AC7D /* ServerUserInfo.m */; };
+		5BECC1851BA7FE1A0065E2EE /* DescriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BECC1841BA7FE1A0065E2EE /* DescriptViewController.m */; };
+		5BECC1881BA8124C0065E2EE /* SocialWorkerDescriptInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BECC1871BA8124C0065E2EE /* SocialWorkerDescriptInfo.m */; };
 		5BECE3491B8EAD1800F291E1 /* SocialWorkerCommentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BECE3481B8EAD1800F291E1 /* SocialWorkerCommentInfo.m */; };
 		5BED3B301BA3D9B900D5F54B /* ServerUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED3B2F1BA3D9B900D5F54B /* ServerUserLocation.m */; };
 		5BED49E61B7C4754002F8AF0 /* ServerShopMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BED49E51B7C4754002F8AF0 /* ServerShopMessage.m */; };
@@ -156,6 +159,8 @@
 		5BEB034D1B6F140000A9ED0F /* FallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FallViewController.m; sourceTree = "<group>"; };
 		5BEB034F1B6F141200A9ED0F /* LocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocusViewController.h; sourceTree = "<group>"; };
 		5BEB03501B6F141200A9ED0F /* LocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocusViewController.m; sourceTree = "<group>"; };
+		5BEB0F781BA6783700BAAD94 /* ChangeUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeUserInfoView.h; sourceTree = "<group>"; };
+		5BEB0F791BA6783700BAAD94 /* ChangeUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeUserInfoView.m; sourceTree = "<group>"; };
 		5BEB199D1B705780007F87C0 /* WorkerMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkerMessageViewController.h; sourceTree = "<group>"; };
 		5BEB199E1B705780007F87C0 /* WorkerMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkerMessageViewController.m; sourceTree = "<group>"; };
 		5BEB19A01B70B861007F87C0 /* SocialWorkerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialWorkerTableViewCell.h; sourceTree = "<group>"; };
@@ -173,6 +178,10 @@
 		5BEC94921B7AD19A0014AC7D /* ServerHeadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerHeadImage.m; sourceTree = "<group>"; };
 		5BEC94941B7AE1CD0014AC7D /* ServerUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerUserInfo.h; sourceTree = "<group>"; };
 		5BEC94951B7AE1CD0014AC7D /* ServerUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerUserInfo.m; sourceTree = "<group>"; };
+		5BECC1831BA7FE1A0065E2EE /* DescriptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptViewController.h; sourceTree = "<group>"; };
+		5BECC1841BA7FE1A0065E2EE /* DescriptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptViewController.m; sourceTree = "<group>"; };
+		5BECC1861BA8124C0065E2EE /* SocialWorkerDescriptInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialWorkerDescriptInfo.h; sourceTree = "<group>"; };
+		5BECC1871BA8124C0065E2EE /* SocialWorkerDescriptInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialWorkerDescriptInfo.m; sourceTree = "<group>"; };
 		5BECE3471B8EAD1800F291E1 /* SocialWorkerCommentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialWorkerCommentInfo.h; sourceTree = "<group>"; };
 		5BECE3481B8EAD1800F291E1 /* SocialWorkerCommentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialWorkerCommentInfo.m; sourceTree = "<group>"; };
 		5BED3B2E1BA3D9B900D5F54B /* ServerUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerUserLocation.h; sourceTree = "<group>"; };
@@ -294,6 +303,8 @@
 				5BECE3481B8EAD1800F291E1 /* SocialWorkerCommentInfo.m */,
 				5BF07C301B90118200C1F3DA /* ShopInfo.h */,
 				5BF07C311B90118200C1F3DA /* ShopInfo.m */,
+				5BECC1861BA8124C0065E2EE /* SocialWorkerDescriptInfo.h */,
+				5BECC1871BA8124C0065E2EE /* SocialWorkerDescriptInfo.m */,
 			);
 			name = Info;
 			sourceTree = "<group>";
@@ -390,6 +401,8 @@
 		5BEB03391B6F0EC000A9ED0F /* Option */ = {
 			isa = PBXGroup;
 			children = (
+				5BEB0F781BA6783700BAAD94 /* ChangeUserInfoView.h */,
+				5BEB0F791BA6783700BAAD94 /* ChangeUserInfoView.m */,
 			);
 			name = Option;
 			sourceTree = "<group>";
@@ -540,6 +553,8 @@
 			children = (
 				5BEB03431B6F110A00A9ED0F /* MessageViewController.h */,
 				5BEB03441B6F110A00A9ED0F /* MessageViewController.m */,
+				5BECC1831BA7FE1A0065E2EE /* DescriptViewController.h */,
+				5BECC1841BA7FE1A0065E2EE /* DescriptViewController.m */,
 			);
 			name = MyMessage;
 			sourceTree = "<group>";
@@ -774,6 +789,7 @@
 				5BE97E5F1B78408E00D1000E /* AFURLRequestSerialization.m in Sources */,
 				5BEC94931B7AD19A0014AC7D /* ServerHeadImage.m in Sources */,
 				5BF5DE281B69C647008DAF9D /* LoginRegisterViewController.m in Sources */,
+				5BECC1881BA8124C0065E2EE /* SocialWorkerDescriptInfo.m in Sources */,
 				5B06491B1B85764E003B8EE2 /* FSCalendar.m in Sources */,
 				5BEB03511B6F141200A9ED0F /* LocusViewController.m in Sources */,
 				5BF5DDFC1B69B96D008DAF9D /* AppDelegate.mm in Sources */,
@@ -782,6 +798,7 @@
 				5BEB199F1B705780007F87C0 /* WorkerMessageViewController.m in Sources */,
 				5BE97E5C1B78408E00D1000E /* AFNetworkReachabilityManager.m in Sources */,
 				5BEF8CB51B8ACD2A00338752 /* SocialWorkerInfo.m in Sources */,
+				5BECC1851BA7FE1A0065E2EE /* DescriptViewController.m in Sources */,
 				5BF07C391B905D8F00C1F3DA /* ShopTableViewCell.m in Sources */,
 				5BE97E601B78408E00D1000E /* AFURLResponseSerialization.m in Sources */,
 				5BEB03481B6F13D900A9ED0F /* GpsLocateViewController.m in Sources */,
@@ -811,6 +828,7 @@
 				5BEF8CB11B8AC58400338752 /* ServerSocialWorkerMessage.m in Sources */,
 				5B06491E1B85764E003B8EE2 /* FSCalendarHeader.m in Sources */,
 				5BED49E61B7C4754002F8AF0 /* ServerShopMessage.m in Sources */,
+				5BEB0F7A1BA6783700BAAD94 /* ChangeUserInfoView.m in Sources */,
 				5BEB034B1B6F13EE00A9ED0F /* FenceViewController.m in Sources */,
 				5BEEF9C41B6C728300FA7342 /* MainCardViewController.m in Sources */,
 				5BE97E681B78827300D1000E /* RegistViewController.m in Sources */,
