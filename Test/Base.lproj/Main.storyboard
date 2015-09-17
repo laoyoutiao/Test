@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jRF-dC-Gbm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94s-1Z-Spa">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -45,7 +46,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NB-VV-msD">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NB-VV-msD">
                                 <rect key="frame" x="26" y="540" width="548" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.69515254439999996" blue="0.23048664329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="退出">
@@ -61,7 +62,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZj-Ng-Bj5">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZj-Ng-Bj5">
                                 <rect key="frame" x="26" y="482" width="548" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.69515254439999996" blue="0.23048664329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="更换账号">
@@ -80,7 +81,7 @@
                                     <action selector="ClickSwitchAccountButton:" destination="ROS-cg-hQm" eventType="touchUpInside" id="Qow-z7-CoA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlh-jP-8gf">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlh-jP-8gf">
                                 <rect key="frame" x="26" y="424" width="548" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.69515254439999996" blue="0.23048664329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -149,7 +150,7 @@
                                     <constraint firstAttribute="width" constant="100" id="iCY-cQ-aIU"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YcA-TM-x8o">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YcA-TM-x8o">
                                 <rect key="frame" x="21" y="253" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -162,7 +163,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhE-eS-I1m">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="账号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhE-eS-I1m">
                                 <rect key="frame" x="21" y="204" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -175,7 +176,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hL1-A7-Gwm">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hL1-A7-Gwm">
                                 <rect key="frame" x="483" y="306" width="30" height="30"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -216,7 +217,7 @@
                                     <action selector="ClickRegistButton:" destination="BfB-7m-R65" eventType="touchUpInside" id="HVU-Xf-adK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记住密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmJ-Z7-Ipb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="记住密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmJ-Z7-Ipb">
                                 <rect key="frame" x="521" y="313" width="68" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -274,7 +275,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh6-Oz-9y9">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh6-Oz-9y9">
                                 <rect key="frame" x="26" y="97" width="548" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.69515254439999996" blue="0.23048664329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -296,7 +297,7 @@
                                     <action selector="ClickNextButton:" destination="1Sj-t8-xWF" eventType="touchUpInside" id="ANJ-t9-fd5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLl-Td-8wO">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLl-Td-8wO">
                                 <rect key="frame" x="26" y="155" width="548" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.69515254439999996" blue="0.23048664329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="二维码扫描">
@@ -315,7 +316,7 @@
                                     <action selector="ClickQRcodeButton:" destination="1Sj-t8-xWF" eventType="touchUpInside" id="a7h-Fw-iP5"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入手表编号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="37E-Hr-yZl">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入手表编号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="37E-Hr-yZl">
                                 <rect key="frame" x="26" y="40" width="548" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -357,6 +358,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5Gb-FX-QgR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4HH-ZS-pzV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -451,6 +453,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ServerTableViewCell" rowHeight="36" id="uCJ-rw-lpJ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uCJ-rw-lpJ" id="VQ7-cK-oWx">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -556,6 +559,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SocialWorkerTableViewCell" rowHeight="156" id="35n-AQ-gB0" customClass="SocialWorkerTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="35n-AQ-gB0" id="v4L-2H-Ab3">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JvW-nd-4l3">
@@ -1190,6 +1194,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShopTableViewCell" rowHeight="126" id="aA2-QK-Y7p" customClass="ShopTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aA2-QK-Y7p" id="2AT-Kc-WbI">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mD4-39-WYm" userLabel="Name">
@@ -1751,7 +1756,9 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KmG-gp-frs" secondAttribute="trailing" id="WzI-hy-med"/>
                             <constraint firstItem="KmG-gp-frs" firstAttribute="leading" secondItem="IrT-8O-F0R" secondAttribute="leading" id="cqY-Wk-24a"/>
-                            <constraint firstItem="KmG-gp-frs" firstAttribute="top" secondItem="IrT-8O-F0R" secondAttribute="topMargin" id="nLK-mX-rMY"/>
+                            <constraint firstItem="KmG-gp-frs" firstAttribute="top" secondItem="IrT-8O-F0R" secondAttribute="topMargin" id="nLK-mX-rMY">
+                                <variation key="heightClass=regular-widthClass=compact" constant="64"/>
+                            </constraint>
                             <constraint firstItem="tA5-qp-axH" firstAttribute="top" secondItem="KmG-gp-frs" secondAttribute="bottom" id="pV0-GU-GQ0"/>
                         </constraints>
                         <variation key="default">
@@ -1804,8 +1811,10 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageTableViewCell" rowHeight="136" id="htO-KG-oDI">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="htO-KG-oDI" id="ioA-ev-oGD">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1865,6 +1874,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cif-1z-LWk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Tz-Om-k9r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSE-qr-KX2">
@@ -2024,10 +2034,14 @@
                                 <exclude reference="PNg-XZ-Nq6"/>
                                 <exclude reference="ue6-oT-KVX"/>
                                 <exclude reference="weP-Sx-wPh"/>
-                                <exclude reference="frg-rt-daH"/>
+                                <exclude reference="EJP-f1-PZf"/>
+                                <exclude reference="iwl-bc-Rj5"/>
+                                <exclude reference="0LR-A3-Xed"/>
+                                <exclude reference="JY0-Bk-mf1"/>
                                 <exclude reference="zCB-Aw-KVZ"/>
-                                <exclude reference="ymc-MK-Acv"/>
+                                <exclude reference="frg-rt-daH"/>
                                 <exclude reference="OOd-eb-pen"/>
+                                <exclude reference="ymc-MK-Acv"/>
                                 <exclude reference="4iL-wK-DHZ"/>
                                 <exclude reference="7s4-gP-4zR"/>
                                 <exclude reference="Bfq-L9-dh1"/>
@@ -2036,10 +2050,6 @@
                                 <exclude reference="buF-kB-mAa"/>
                                 <exclude reference="cU4-Wr-In3"/>
                                 <exclude reference="yj0-qs-9Az"/>
-                                <exclude reference="iwl-bc-Rj5"/>
-                                <exclude reference="0LR-A3-Xed"/>
-                                <exclude reference="JY0-Bk-mf1"/>
-                                <exclude reference="EJP-f1-PZf"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2057,10 +2067,14 @@
                                 <include reference="PNg-XZ-Nq6"/>
                                 <include reference="ue6-oT-KVX"/>
                                 <include reference="weP-Sx-wPh"/>
-                                <include reference="frg-rt-daH"/>
+                                <include reference="EJP-f1-PZf"/>
+                                <include reference="iwl-bc-Rj5"/>
+                                <include reference="0LR-A3-Xed"/>
+                                <include reference="JY0-Bk-mf1"/>
                                 <include reference="zCB-Aw-KVZ"/>
-                                <include reference="ymc-MK-Acv"/>
+                                <include reference="frg-rt-daH"/>
                                 <include reference="OOd-eb-pen"/>
+                                <include reference="ymc-MK-Acv"/>
                                 <include reference="4iL-wK-DHZ"/>
                                 <include reference="7s4-gP-4zR"/>
                                 <include reference="Bfq-L9-dh1"/>
@@ -2069,10 +2083,6 @@
                                 <include reference="buF-kB-mAa"/>
                                 <include reference="cU4-Wr-In3"/>
                                 <include reference="yj0-qs-9Az"/>
-                                <include reference="iwl-bc-Rj5"/>
-                                <include reference="0LR-A3-Xed"/>
-                                <include reference="JY0-Bk-mf1"/>
-                                <include reference="EJP-f1-PZf"/>
                             </mask>
                         </variation>
                     </view>
@@ -2401,7 +2411,7 @@
             </objects>
             <point key="canvasLocation" x="6180" y="348"/>
         </scene>
-        <!--Health Remind View Controller-->
+        <!--Data Source-->
         <scene sceneID="aVK-OC-o2V">
             <objects>
                 <viewController storyboardIdentifier="HealthRemindView" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Mn-xU-Qvf" customClass="HealthRemindViewController" sceneMemberID="viewController">
@@ -2683,9 +2693,6 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
-                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -2708,9 +2715,6 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
-                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
@@ -2953,6 +2957,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OptionCellFirst" rowHeight="36" id="JIj-RM-4mS">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JIj-RM-4mS" id="khc-hr-T46">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.97409366519999996" green="1" blue="0.9807090731" alpha="1" colorSpace="calibratedRGB"/>
@@ -2960,6 +2965,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OptionCellSecond" rowHeight="36" id="ueo-bs-QOI">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ueo-bs-QOI" id="7Pm-iy-1pQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2989,7 +2995,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="7OD-81-3P0" firstAttribute="leading" secondItem="tge-FP-4qP" secondAttribute="leading" id="NfZ-ur-7e5"/>
-                            <constraint firstItem="7OD-81-3P0" firstAttribute="top" secondItem="tge-FP-4qP" secondAttribute="top" id="kFt-el-fen"/>
+                            <constraint firstItem="7OD-81-3P0" firstAttribute="top" secondItem="tge-FP-4qP" secondAttribute="top" id="kFt-el-fen">
+                                <variation key="heightClass=regular-widthClass=compact" constant="64"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="7OD-81-3P0" secondAttribute="trailing" id="oAY-YO-7XC"/>
                         </constraints>
                         <variation key="default">
@@ -3361,7 +3369,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="Qj2-12-b5P" kind="push" id="dyL-OL-eva"/>
+                                    <segue destination="Qj2-12-b5P" kind="show" id="lCi-Kf-Sq9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-Mn-fDd">
@@ -3371,7 +3379,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="jrX-1p-MaG" kind="push" id="U39-xH-eAK"/>
+                                    <segue destination="jrX-1p-MaG" kind="show" id="0vS-bq-VxQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0g-z4-4Qp">
@@ -3381,7 +3389,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ESx-2e-HUd" kind="push" id="OGq-Gu-GfG"/>
+                                    <segue destination="ESx-2e-HUd" kind="show" id="Fj7-0j-El6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1M-bY-43G">
@@ -3391,7 +3399,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="UwQ-01-nNS" kind="push" id="IiN-o6-x3H"/>
+                                    <segue destination="UwQ-01-nNS" kind="show" id="Xqq-LV-rBV"/>
                                 </connections>
                             </button>
                         </subviews>

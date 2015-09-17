@@ -54,6 +54,7 @@
     NSDictionary *parameters = @{@"operate": operate,
                                  @"username": username,
                                  @"imgStr": ImageStr};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/HeadImage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);

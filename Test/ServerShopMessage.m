@@ -55,6 +55,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"operate": @"look",
                                  @"city": city};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/ShopManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
@@ -83,6 +84,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"operate": @"getshops",
                                  @"city": bound};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/ShopManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
@@ -107,6 +109,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"operate": @"shopinfo",
                                  @"city": shopid};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/ShopManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);

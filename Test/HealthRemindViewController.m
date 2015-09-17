@@ -52,7 +52,7 @@
 {
     NSDate *date = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH-mm-ss"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     _TimeLabel.text = [formatter stringFromDate:date];
 //    NSString *time = @"2015-08-19 12:10:10  ";
 //    NSDate *date1 = [formatter dateFromString:time];

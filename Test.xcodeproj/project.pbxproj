@@ -14,6 +14,7 @@
 		5B06491F1B85764E003B8EE2 /* NSDate+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0649181B85764E003B8EE2 /* NSDate+FSExtension.m */; };
 		5B0649201B85764E003B8EE2 /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B06491A1B85764E003B8EE2 /* UIView+FSExtension.m */; };
 		5B2B074A1B7D875A00C26662 /* HotWheelsOfFrittersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2B07491B7D875A00C26662 /* HotWheelsOfFrittersView.m */; };
+		5B459D361BAA583C00E37340 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B459D351BAA583C00E37340 /* libiconv.tbd */; };
 		5BACE6AF1B8EE37600D0C23A /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BACE6AE1B8EE37600D0C23A /* UserInfo.m */; };
 		5BCC5B7F1B8C4BF800C0CAB1 /* NSDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC5B7E1B8C4BF800C0CAB1 /* NSDictionary+Safe.m */; };
 		5BE97E441B78343800D1000E /* ShopMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE97E431B78343800D1000E /* ShopMessageViewController.m */; };
@@ -44,7 +45,6 @@
 		5BEC3C921B6AFC020069660C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEC3C911B6AFC020069660C /* CoreMedia.framework */; };
 		5BEC3C941B6AFC0B0069660C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEC3C931B6AFC0B0069660C /* CoreVideo.framework */; };
 		5BEC3C961B6AFC150069660C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEC3C951B6AFC150069660C /* QuartzCore.framework */; };
-		5BEC3C981B6AFC1D0069660C /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEC3C971B6AFC1D0069660C /* libiconv.dylib */; };
 		5BEC3CBF1B6B25590069660C /* MainWhereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC3CBE1B6B25590069660C /* MainWhereViewController.m */; };
 		5BEC3CC51B6B57320069660C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEC3CC41B6B57320069660C /* TabBarController.m */; };
 		5BEC51551B730C5E00EED09B /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEC51541B730C5E00EED09B /* SpriteKit.framework */; };
@@ -110,6 +110,7 @@
 		5B06491A1B85764E003B8EE2 /* UIView+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+FSExtension.m"; path = "Test/FSCalendar/UIView+FSExtension.m"; sourceTree = "<group>"; };
 		5B2B07481B7D875A00C26662 /* HotWheelsOfFrittersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotWheelsOfFrittersView.h; sourceTree = "<group>"; };
 		5B2B07491B7D875A00C26662 /* HotWheelsOfFrittersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotWheelsOfFrittersView.m; sourceTree = "<group>"; };
+		5B459D351BAA583C00E37340 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		5BACE6AD1B8EE37600D0C23A /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		5BACE6AE1B8EE37600D0C23A /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		5BCC5B7D1B8C4BF800C0CAB1 /* NSDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Safe.h"; sourceTree = "<group>"; };
@@ -168,7 +169,6 @@
 		5BEC3C911B6AFC020069660C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		5BEC3C931B6AFC0B0069660C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5BEC3C951B6AFC150069660C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		5BEC3C971B6AFC1D0069660C /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		5BEC3CBD1B6B25590069660C /* MainWhereViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWhereViewController.h; sourceTree = "<group>"; };
 		5BEC3CBE1B6B25590069660C /* MainWhereViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWhereViewController.m; sourceTree = "<group>"; };
 		5BEC3CC31B6B57320069660C /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
@@ -242,13 +242,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B459D361BAA583C00E37340 /* libiconv.tbd in Frameworks */,
 				5BF26EA71B9576160068986C /* CoreGraphics.framework in Frameworks */,
 				5BF26EA51B9575DE0068986C /* OpenGLES.framework in Frameworks */,
 				5BF26EA31B9575D20068986C /* CoreLocation.framework in Frameworks */,
 				5BF26EA11B9575C60068986C /* SystemConfiguration.framework in Frameworks */,
 				5BF26E9F1B9575B60068986C /* Security.framework in Frameworks */,
 				5BEC51551B730C5E00EED09B /* SpriteKit.framework in Frameworks */,
-				5BEC3C981B6AFC1D0069660C /* libiconv.dylib in Frameworks */,
 				5BF26E9D1B95759E0068986C /* BaiduMapAPI.framework in Frameworks */,
 				5BEC3C961B6AFC150069660C /* QuartzCore.framework in Frameworks */,
 				5BEC3C941B6AFC0B0069660C /* CoreVideo.framework in Frameworks */,
@@ -571,7 +571,7 @@
 		5BF26E981B9574EC0068986C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				5BEC3C971B6AFC1D0069660C /* libiconv.dylib */,
+				5B459D351BAA583C00E37340 /* libiconv.tbd */,
 				5BF26EA61B9576160068986C /* CoreGraphics.framework */,
 				5BF26EA41B9575DE0068986C /* OpenGLES.framework */,
 				5BF26EA21B9575D20068986C /* CoreLocation.framework */,
@@ -969,10 +969,6 @@
 				);
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ZBarSDK",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -987,10 +983,6 @@
 				);
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ZBarSDK",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

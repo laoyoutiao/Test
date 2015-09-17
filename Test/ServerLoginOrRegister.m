@@ -44,6 +44,7 @@
     NSDictionary *parameters = @{@"operate": @"login",
                                  @"username": username,
                                  @"password": password};
+    manager.requestSerializer.timeoutInterval = 20;
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"]; //服务器接受类型
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSLog(@"json-->%@",responseObject);
@@ -76,6 +77,7 @@
                                  @"password": password,
                                  @"usertype": usertype,
                                  @"sex":sex};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
@@ -102,6 +104,7 @@
     NSDictionary *parameters = @{@"operate": @"bindcid",
                                  @"username": username,
                                  @"cid": cidstr};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
@@ -128,6 +131,7 @@
     NSDictionary *parameters = @{@"operate": @"logout",
                                  @"username": username,
                                  @"cid": cidstr};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {

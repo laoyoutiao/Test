@@ -63,6 +63,7 @@
     [[ServerShopMessage sharedInstance] GetShoppostString:@"佛山市" SelectKind:SelectKindCity];
     _ShopMessageTime = 0;
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(shopmessage:) userInfo:nil repeats:YES];
+    UIDatePickerModeCountDownTimer;
 }
 
 - (void)setTableView
@@ -110,7 +111,6 @@
 {
     _cell = [tableView dequeueReusableCellWithIdentifier:@"ShopTableViewCell" forIndexPath:indexPath];
     [_cell InfoOfCell:[_ShopMessageDictArray objectAtIndex:indexPath.row]];
-    tableView.estimatedRowHeight = 120;
     return _cell;
 }
 

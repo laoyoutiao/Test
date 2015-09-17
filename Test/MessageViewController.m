@@ -33,6 +33,7 @@
     _BookMessageDict = [[NSMutableDictionary alloc] init];
     _BookMessageDictArray = [[NSArray alloc] init];
     
+    [self ReviseNavigation];
     [self workerMessage];
     // Do any additional setup after loading the view.
 }
@@ -121,16 +122,6 @@
     return 1;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30)];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.text = @"1";
-    [view addSubview:label];
-    return view;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 30.0f;
@@ -146,15 +137,43 @@
     return [_BookMessageDictArray count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 1;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageTableViewCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor blackColor];
-    SocialWorkerDescriptInfo *info = [_BookMessageDictArray objectAtIndex:indexPath.row];
+    SocialWorkerDescriptInfo *info ;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, [UIScreen mainScreen].bounds.size.width - 10, 160)];
+    [cell addSubview:label];
+    label.text = [NSString stringWithFormat:@"\n预约对象 : %@\n预约编号 : %@\n预约状态 : %@\n服务内容 : %@\n服务地址 : %@\n预约时间 : %@\n",info.spokername,info.bespoke_id,info.statue,info.item,info.address,info.bespoketime];
+    label.numberOfLines = 0;
+    if ([info.address length] > 13) {
+        tableView.rowHeight = tableView.rowHeight + 20;
+        CGRect rect = label.frame;
+        rect.size.height = rect.size.height + 20;
+        label.frame = rect;
+    }else if ([info.address length] > 31)
+    {
+        tableView.rowHeight = tableView.rowHeight + 40;
+        CGRect rect = label.frame;
+        rect.size.height = rect.size.height + 40;
+        label.frame = rect;
+    }
+    label.textColor = [UIColor whiteColor];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    SocialWorkerDescriptInfo *info = [_BookMessageDictArray objectAtIndex:section];
+    return info.bespoketime;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DescriptViewController *descriptview = [self.storyboard instantiateViewControllerWithIdentifier:@"DescriptView"];

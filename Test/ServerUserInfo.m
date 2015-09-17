@@ -37,7 +37,7 @@
                UserInfoKindNsarray:(NSArray *)userinfokindarray
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
+    manager.requestSerializer.timeoutInterval = 20;
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:@"update" forKey:@"operate"];
     [parameters setObject:username forKey:@"username"];
@@ -69,6 +69,7 @@
                       Cellphone:(NSString *)cellphone
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer.timeoutInterval = 20;
     NSDictionary *parameters = @{@"operate": @"update",
                                  @"username": username,
                                  @"cellphone": cellphone};

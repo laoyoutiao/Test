@@ -51,6 +51,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"operate": @"look",
                                  @"city": city};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/WorkerManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
@@ -79,6 +80,7 @@
     NSDictionary *parameters = @{@"operate": @"look",
                                  @"city": city,
                                  @"area": area};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/WorkerManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
@@ -109,6 +111,7 @@
     NSDictionary *parameters = @{@"operate": @"getcomment",
                                  @"username": username,
                                  @"rowcount": [NSString stringWithFormat:@"%ld",rowcount]};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/WorkerManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //      NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
@@ -140,6 +143,7 @@
     NSDictionary *parameters = @{@"operate": @"getcomment",
                                  @"username": username,
                                  @"usertype": usertype};
+    manager.requestSerializer.timeoutInterval = 20;
     [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/WorkerManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //      NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);

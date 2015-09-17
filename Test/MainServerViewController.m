@@ -88,9 +88,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SocialWorkerViewController *socialworkerview = [self.storyboard instantiateViewControllerWithIdentifier:@"SocialWorkerView"];
-    ShopViewController *shopview = [self.storyboard instantiateViewControllerWithIdentifier:@"ShopView"];;
-    ThingViewController *thingview = [self.storyboard instantiateViewControllerWithIdentifier:@"ThingView"];;
-    MessageViewController *messageview = [self.storyboard instantiateViewControllerWithIdentifier:@"MessageView"];;
+    ShopViewController *shopview = [self.storyboard instantiateViewControllerWithIdentifier:@"ShopView"];
+    ThingViewController *thingview = [self.storyboard instantiateViewControllerWithIdentifier:@"ThingView"];
+    MessageViewController *messageview = [self.storyboard instantiateViewControllerWithIdentifier:@"MessageView"];
     switch (indexPath.row) {
         case 0:
             [self.navigationController pushViewController:socialworkerview animated:YES];
@@ -105,7 +105,7 @@
             break;
             
         case 3:
-            [self.navigationController pushViewController:messageview animated:YES];
+            [self.navigationController showViewController:messageview sender:nil];
             break;
             
         default:

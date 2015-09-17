@@ -127,7 +127,7 @@
     collectionViewFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     collectionViewFlowLayout.minimumInteritemSpacing = 0;
     collectionViewFlowLayout.minimumLineSpacing = 0;
-    collectionViewFlowLayout.itemSize = CGSizeMake(0, 0);
+    collectionViewFlowLayout.itemSize = CGSizeMake(1, 1);
     self.collectionViewFlowLayout = collectionViewFlowLayout;
     
     
@@ -246,7 +246,6 @@
     cell.image = [self imageForDate:cell.date];
     cell.subtitle  = [self subtitleForDate:cell.date];
     cell.hasEvent = [self hasEventForDate:cell.date];
-    cell.backgroundColor = [UIColor blackColor];
 //    NSLog(@"%@",_FirstSelectCell.date);
 //    if(_FirstSelectCell.date == cell.date)
 //    {
