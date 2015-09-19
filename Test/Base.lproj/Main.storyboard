@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="94s-1Z-Spa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jRF-dC-Gbm">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -2270,22 +2270,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87p-fs-5Qd">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87p-fs-5Qd" customClass="LineChartView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="AdD-Ry-Kv5"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="AdD-Ry-Kv5"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="AdD-Ry-Kv5"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvE-lr-3eO">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -2339,6 +2326,12 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTt-2D-stu">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2347,11 +2340,19 @@
                             <constraint firstItem="bcc-bh-avF" firstAttribute="leading" secondItem="vJ2-h5-nrK" secondAttribute="trailing" constant="20" id="CRA-vu-NG2"/>
                             <constraint firstItem="CvE-lr-3eO" firstAttribute="height" secondItem="bcc-bh-avF" secondAttribute="height" id="DTZ-aP-ggc"/>
                             <constraint firstItem="CvE-lr-3eO" firstAttribute="top" secondItem="caw-hV-9G1" secondAttribute="bottom" constant="20" id="F03-YA-dIo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KTt-2D-stu" secondAttribute="trailing" id="L1F-S3-5DD"/>
+                            <constraint firstItem="KTt-2D-stu" firstAttribute="top" secondItem="vJ2-h5-nrK" secondAttribute="bottom" constant="20" id="NcV-zV-Jdu"/>
                             <constraint firstItem="CvE-lr-3eO" firstAttribute="height" secondItem="vJ2-h5-nrK" secondAttribute="height" id="QMs-CT-vo1"/>
                             <constraint firstItem="bcc-bh-avF" firstAttribute="top" secondItem="caw-hV-9G1" secondAttribute="bottom" constant="20" id="Rn3-EE-UcM"/>
                             <constraint firstItem="vJ2-h5-nrK" firstAttribute="top" secondItem="caw-hV-9G1" secondAttribute="bottom" constant="20" id="S6T-XX-4s5"/>
                             <constraint firstAttribute="bottom" secondItem="87p-fs-5Qd" secondAttribute="bottom" id="Tra-hc-2bd"/>
                             <constraint firstItem="87p-fs-5Qd" firstAttribute="leading" secondItem="FJ4-mf-4eO" secondAttribute="leading" id="USl-gz-m8S"/>
+                            <constraint firstItem="KTt-2D-stu" firstAttribute="leading" secondItem="FJ4-mf-4eO" secondAttribute="leadingMargin" id="Y7R-qM-jdb"/>
+                            <constraint firstItem="87p-fs-5Qd" firstAttribute="top" secondItem="KTt-2D-stu" secondAttribute="bottom" constant="50" id="ZId-mt-dya"/>
+                            <constraint firstItem="dRA-tf-Pp2" firstAttribute="top" secondItem="87p-fs-5Qd" secondAttribute="bottom" constant="30" id="bJS-VL-39u"/>
+                            <constraint firstItem="87p-fs-5Qd" firstAttribute="top" secondItem="vJ2-h5-nrK" secondAttribute="bottom" constant="30" id="kqn-Kl-d8f">
+                                <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="87p-fs-5Qd" secondAttribute="trailing" id="oeU-UE-nmB"/>
                             <constraint firstAttribute="centerX" secondItem="vJ2-h5-nrK" secondAttribute="centerX" id="sb2-dD-A7h"/>
                         </constraints>
@@ -2361,20 +2362,27 @@
                                 <exclude reference="CvE-lr-3eO"/>
                                 <exclude reference="bcc-bh-avF"/>
                                 <exclude reference="vJ2-h5-nrK"/>
+                                <exclude reference="KTt-2D-stu"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="B8W-Ue-JYx"/>
-                                <exclude reference="S6T-XX-4s5"/>
-                                <exclude reference="sb2-dD-A7h"/>
                                 <exclude reference="3S5-PR-dxb"/>
                                 <exclude reference="DTZ-aP-ggc"/>
                                 <exclude reference="F03-YA-dIo"/>
                                 <exclude reference="QMs-CT-vo1"/>
-                                <exclude reference="CRA-vu-NG2"/>
-                                <exclude reference="Rn3-EE-UcM"/>
+                                <exclude reference="B8W-Ue-JYx"/>
+                                <exclude reference="S6T-XX-4s5"/>
+                                <exclude reference="sb2-dD-A7h"/>
+                                <exclude reference="L1F-S3-5DD"/>
+                                <exclude reference="NcV-zV-Jdu"/>
+                                <exclude reference="Y7R-qM-jdb"/>
                                 <exclude reference="Tra-hc-2bd"/>
                                 <exclude reference="USl-gz-m8S"/>
+                                <exclude reference="ZId-mt-dya"/>
+                                <exclude reference="kqn-Kl-d8f"/>
                                 <exclude reference="oeU-UE-nmB"/>
+                                <exclude reference="CRA-vu-NG2"/>
+                                <exclude reference="Rn3-EE-UcM"/>
+                                <exclude reference="bJS-VL-39u"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2383,28 +2391,34 @@
                                 <include reference="CvE-lr-3eO"/>
                                 <include reference="bcc-bh-avF"/>
                                 <include reference="vJ2-h5-nrK"/>
+                                <include reference="KTt-2D-stu"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="B8W-Ue-JYx"/>
-                                <include reference="S6T-XX-4s5"/>
-                                <include reference="sb2-dD-A7h"/>
                                 <include reference="3S5-PR-dxb"/>
                                 <include reference="DTZ-aP-ggc"/>
                                 <include reference="F03-YA-dIo"/>
                                 <exclude reference="QMs-CT-vo1"/>
+                                <include reference="B8W-Ue-JYx"/>
+                                <include reference="S6T-XX-4s5"/>
+                                <include reference="sb2-dD-A7h"/>
+                                <include reference="L1F-S3-5DD"/>
+                                <include reference="NcV-zV-Jdu"/>
+                                <include reference="Y7R-qM-jdb"/>
+                                <exclude reference="Tra-hc-2bd"/>
+                                <include reference="USl-gz-m8S"/>
+                                <include reference="ZId-mt-dya"/>
+                                <include reference="kqn-Kl-d8f"/>
+                                <include reference="oeU-UE-nmB"/>
                                 <include reference="CRA-vu-NG2"/>
                                 <include reference="Rn3-EE-UcM"/>
-                                <include reference="Tra-hc-2bd"/>
-                                <include reference="USl-gz-m8S"/>
-                                <include reference="oeU-UE-nmB"/>
+                                <include reference="bJS-VL-39u"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="KXp-YP-XY0"/>
                     <connections>
                         <outlet property="DateLabel" destination="vJ2-h5-nrK" id="OOS-MO-7O5"/>
-                        <outlet property="LineView" destination="87p-fs-5Qd" id="TsB-5U-vWT"/>
-                        <outlet property="LineViewHeigth" destination="AdD-Ry-Kv5" id="rgm-Cg-s4m"/>
+                        <outlet property="lineChartView" destination="87p-fs-5Qd" id="cRZ-PJ-NNm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tGy-Va-0bi" userLabel="First Responder" sceneMemberID="firstResponder"/>

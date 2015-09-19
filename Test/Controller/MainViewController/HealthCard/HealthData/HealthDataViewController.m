@@ -1,4 +1,4 @@
-//
+    //
 //  HealthDataViewController.m
 //  Test
 //
@@ -12,10 +12,10 @@
 #import "UserInfo.h"
 
 @interface HealthDataViewController ()
-@property (weak, nonatomic) IBOutlet UIView *LineView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *LineViewHeigth;
+@property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *DateLabel;
 @property (strong, nonatomic) UserInfo *userinfo;
+@property (strong, nonatomic) NSArray *pointarray;
 @end
 
 @implementation HealthDataViewController
@@ -44,17 +44,13 @@
 
 - (void)setlineView
 {
-    LineChartView *lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, _LineViewHeigth.constant)];
-    
-    
-    NSArray *pointArr = [[NSArray alloc] initWithObjects:@"10",@"120",@"40",@"20",@"50",@"30",@"20",@"110",@"140",@"30",@"80",@"60",@"70",@"100",@"20",@"110",@"90",@"70",@"50",@"40",@"10", nil];
-
-    [lineChartView setArray:pointArr];
-    [_LineView addSubview:lineChartView];
-    
     [ServerHealthInfo GetHealthInfopostName:_userinfo.username time:@"2015-08-17" Block:^(NSDictionary *dict){
 //        NSLog(@"%@",dict);
+        _pointarray = [[NSArray alloc] initWithObjects:@"10",@"120",@"40",@"20",@"50",@"30",@"20",@"110",@"140",@"30",@"80",@"60",@"70",@"100",@"20",@"110",@"90",@"70",@"50",@"40",@"10", nil];
+        [_lineChartView setArray:_pointarray];
+        [_lineChartView setNeedsDisplay];
     }];
+    
 }
 
 - (void)setdateLabel

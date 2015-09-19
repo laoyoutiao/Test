@@ -10,6 +10,7 @@
 #import "EquipmentBindingViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <Photos/Photos.h>
+#import "UIColor+Hex.h"
 
 @interface AppDelegate () <UISplitViewControllerDelegate,CLLocationManagerDelegate>
 @property(strong, nonatomic) CLLocationManager *locationManager;
@@ -28,6 +29,7 @@
         NSLog(@"manager start failed!");
     }
 //    NSLog(@"%@",[NSProcessInfo processInfo].environment);
+    NSLog(@"%@",[UIColor hexFromUIColor:[UIColor greenColor]]);
     
     [UIApplication sharedApplication].idleTimerDisabled = TRUE;
     self.locationManager = [[CLLocationManager alloc] init];
