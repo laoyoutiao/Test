@@ -23,7 +23,7 @@
     // Override point for customization after application launch.
     
     _mapmanager = [[BMKMapManager alloc]init];
-    BOOL ret = [_mapmanager start:@"McX4fnt74KFH1AUhjauG3Ygz" generalDelegate:self];
+    BOOL ret = [_mapmanager start:@"3RGfekq3VgnvgkWhIUuRbtE1" generalDelegate:self];
 
     if (!ret) {
         NSLog(@"manager start failed!");

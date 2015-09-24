@@ -83,7 +83,6 @@
 		5BF5DE051B69B96D008DAF9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5DE031B69B96D008DAF9D /* Main.storyboard */; };
 		5BF5DE071B69B96D008DAF9D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5DE061B69B96D008DAF9D /* Images.xcassets */; };
 		5BF5DE0A1B69B96D008DAF9D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BF5DE081B69B96D008DAF9D /* LaunchScreen.xib */; };
-		5BF5DE161B69B96D008DAF9D /* OldManTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5DE151B69B96D008DAF9D /* OldManTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +216,8 @@
 		5B50E7EE1BABF3A50047E861 /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
 		5B50E7F01BABF3A50047E861 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		5B50E7F11BABF3A50047E861 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		5B64A4171BB2A3B6000C55C4 /* MyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHeader.h; sourceTree = "<group>"; };
+		5B64A4191BB2A489000C55C4 /* MyHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHeader.h; sourceTree = "<group>"; };
 		5BEC3C911B6AFC020069660C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		5BEC3C931B6AFC0B0069660C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5BEC3C951B6AFC150069660C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -239,7 +240,6 @@
 		5BF5DE091B69B96D008DAF9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5BF5DE0F1B69B96D008DAF9D /* OldMan.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OldMan.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF5DE141B69B96D008DAF9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5BF5DE151B69B96D008DAF9D /* OldManTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldManTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -571,6 +571,7 @@
 			children = (
 				5B50E7EC1BABF3A50047E861 /* NSDictionary */,
 				5B50E7EF1BABF3A50047E861 /* UIColor */,
+				5B64A4191BB2A489000C55C4 /* MyHeader.h */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -678,7 +679,7 @@
 		5BF5DE121B69B96D008DAF9D /* OldManTests */ = {
 			isa = PBXGroup;
 			children = (
-				5BF5DE151B69B96D008DAF9D /* OldManTests.m */,
+				5B64A4171BB2A3B6000C55C4 /* MyHeader.h */,
 				5BF5DE131B69B96D008DAF9D /* Supporting Files */,
 			);
 			path = OldManTests;
@@ -861,7 +862,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BF5DE161B69B96D008DAF9D /* OldManTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,7 +1008,6 @@
 		5BF5DE1D1B69B96D008DAF9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(OldMan_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1027,7 +1026,6 @@
 		5BF5DE1E1B69B96D008DAF9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(OldMan_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

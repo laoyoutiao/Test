@@ -27,8 +27,8 @@
     [_mapView setZoomLevel:14];
     
     [self ReviseNavigation];
-    [self locationstart];
-
+//    [self locationstart];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(locationstart) userInfo:nil repeats:NO];
     // Do any additional setup after loading the view.
 }
 
@@ -62,9 +62,8 @@
 {
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfo"];
     _userinfo = [[UserInfo alloc] initWithDictionary:dict];
-    __weak typeof(self) weakself = self;
     [ServerUserLocation GetLocationpostName:_userinfo.username Block:^(NSDictionary *locationdict){
-//        NSLog(@"%@",locationdict);
+        NSLog(@"%@",locationdict);
         CLLocationCoordinate2D pt;
         if ([[locationdict objectForKey:@"result"] isEqualToString:@"false"]) {
             NSString *message = [locationdict objectForKey:@"message"];
@@ -75,39 +74,29 @@
             float latitude = [[locationdict objectForKey:@"latiude"] floatValue];
             float longitude = [[locationdict objectForKey:@"longitude"] floatValue];
             pt = (CLLocationCoordinate2D){latitude,longitude};
+            pt = (CLLocationCoordinate2D){23.057863,113.370758};
             BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];
             reverseGeocodeSearchOption.reverseGeoPoint = pt;
-            [weakself locationgo_on];
-            [weakself locationend];
+            [_geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
+
         }
     }];
 }
 
-- (void)locationgo_on
-{
-    _mapView.showsUserLocation = NO;//先关闭显示的定位图层
-    _mapView.userTrackingMode = BMKUserTrackingModeFollow;//设置定位的状态
-    _mapView.showsUserLocation = YES;//显示定位图层
-}
 
-- (void)locationend
+- (void)textLabel:(NSString *)locationstring
 {
-    NSLog(@"完成定位");
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd hh:mm";
+    NSString *time = [formatter stringFromDate:date];
+    
+    UILabel *textLable = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 120, 150, 240, 100)];
+    textLable.text = [NSString stringWithFormat:@"定位时间 : %@\n\n手表位置 : %@",time,locationstring];
+    textLable.numberOfLines = 0;
+    [self.view addSubview:textLable];
+    textLable.backgroundColor = [UIColor whiteColor];
 }
-
-//- (void)textLabel:(NSString *)locationstring
-//{
-//    NSDate *date = [NSDate date];
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    formatter.dateFormat = @"yyyy-MM-dd hh:mm";
-//    NSString *time = [formatter stringFromDate:date];
-//    
-//    UILabel *textLable = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 120, 150, 240, 100)];
-//    textLable.text = [NSString stringWithFormat:@"定位时间 : %@\n\n手表位置 : %@",time,locationstring];
-//    textLable.numberOfLines = 0;
-//    [self.view addSubview:textLable];
-//    textLable.backgroundColor = [UIColor whiteColor];
-//}
 
 #pragma mark Clickalertview
 
@@ -132,7 +121,7 @@
 //根据anntation生成对应的View
 - (BMKAnnotationView *)mapView:(BMKMapView *)view viewForAnnotation:(id <BMKAnnotation>)annotation
 {
-    NSString *AnnotationViewID = @"annotationViewID";
+    NSString *AnnotationViewID = @"annotationView";
     //根据指定标识查找一个可被复用的标注View，一般在delegate中使用，用此函数来代替新申请一个View
     BMKAnnotationView *annotationView = [view dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
     if (annotationView == nil) {
@@ -162,8 +151,8 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyy-MM-dd hh:mm";
         NSString *time = [formatter stringFromDate:date];
-        item.title = [NSString stringWithFormat:@"定位时间 : %@",time];
-        item.subtitle = [NSString stringWithFormat:@"手表位置 : %@",result.address];
+        item.subtitle = [NSString stringWithFormat:@"定位时间 : %@",time];
+        item.title = [NSString stringWithFormat:@"手表位置 : %@",result.address];
         [_mapView addAnnotation:item];
         _mapView.centerCoordinate = result.location;
         

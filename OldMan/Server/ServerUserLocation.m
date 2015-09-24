@@ -34,7 +34,7 @@
         {
             resultlocation = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"],@"latiude":@"2"};
         }
-        NSLog(@"%@",resultlocation);
+//        NSLog(@"%@",resultlocation);
         block(resultlocation);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         resultlocation = @{@"result": @"false", @"message": @"未知错误"};
