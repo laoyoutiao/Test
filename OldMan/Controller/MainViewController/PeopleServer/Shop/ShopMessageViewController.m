@@ -40,7 +40,7 @@
 
 - (void)ReviseNavigation
 {
-    self.title = @"社工详情";
+    self.title = @"商店详情";
 }
 
 - (void)setImage
@@ -53,7 +53,7 @@
 {
     _NameLabel.text = [NSString stringWithFormat:@"商店名称 : %@",_info.shop_name];
     _PriceLabel.text = [NSString stringWithFormat:@"商店价格 : %.1f",_info.perprice];
-    _IntroduceLabel.text = [NSString stringWithFormat:@"商店介绍 : %@",_info.activity];
+    _IntroduceLabel.text = [NSString stringWithFormat:@"商店介绍 : %@",_info.activity ? : @""];
     _TimeLabel.text = [NSString stringWithFormat:@"有效期 : "];
     _WorkPhoneLabel.text = [NSString stringWithFormat:@"社工电话 : "];
     

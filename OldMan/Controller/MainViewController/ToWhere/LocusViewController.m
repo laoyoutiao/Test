@@ -28,7 +28,7 @@
 {
     //    [self.navigationController setNavigationBarHidden:YES];
     [self.navigationController.navigationBar setBarTintColor:[UIColor grayColor]];
-    self.title = @"GPS定位";
+    self.title = @"轨迹查询";
 }
 /*
 #pragma mark - Navigation

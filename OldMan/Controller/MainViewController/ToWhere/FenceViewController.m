@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 @property (strong, nonatomic) BMKGeoCodeSearch *geocodesearch;
 @property (strong, nonatomic) UserInfo *userinfo;
+@property (strong, nonatomic) UITableViewCell *cell;
+@property (strong, nonatomic) UITableView *tableview;
 
 @end
 
@@ -61,11 +63,11 @@
 
 - (void)setTableview
 {
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenSize.width, 160)];
-    tableview.delegate = self;
-    tableview.dataSource = self;
-    tableview.scrollEnabled = NO;
-    [self.view addSubview:tableview];
+    _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenSize.width, 160)];
+    _tableview.delegate = self;
+    _tableview.dataSource = self;
+    _tableview.scrollEnabled = NO;
+    [self.view addSubview:_tableview];
 }
 
 #pragma mark TableViewDelegate or Datasource
@@ -103,12 +105,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.textLabel.text = nil;
-    UITextField *field = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, ScreenSize.width - 30, cell.frame.size.height)];
-    [cell addSubview:field];
+    _cell = [tableView cellForRowAtIndexPath:indexPath];
+    _cell.textLabel.text = nil;
+    UITextField *field = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, ScreenSize.width - 30, _cell.frame.size.height)];
+    [_cell addSubview:field];
     field.delegate = self;
+    field.textColor = [UIColor whiteColor];
+    field.tag = TagNumber(indexPath.row);
     [field becomeFirstResponder];
+    _cell.tag = TagNumber(indexPath.row);
+    [_cell reloadInputViews];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -130,7 +136,41 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    NSLog(@"%ld",textField.tag);
+    UITableViewCell *cell = [_tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:textField.tag - TagNumber(0) inSection:0]];
+    switch (textField.tag) {
+        case TagNumber(0):
+            if ([textField.text isEqualToString:@""]) {
+                textField.text = @"请输入围栏名称";
+            }
+            cell.textLabel.text = [NSString stringWithFormat:@"围栏名称 : %@",textField.text];
+            break;
+            
+        case TagNumber(1):
+            if ([textField.text isEqualToString:@""]) {
+                textField.text = @"详细地址";
+            }
+            cell.textLabel.text = [NSString stringWithFormat:@"城市选择 : %@",textField.text];
+            break;
+            
+        case TagNumber(2):
+            if ([textField.text isEqualToString:@""]) {
+                textField.text = @"开始时间和结束时间";
+            }
+            cell.textLabel.text = [NSString stringWithFormat:@"围栏时段 : %@",textField.text];
+            break;
+            
+        case TagNumber(3):
+            if ([textField.text isEqualToString:@""]) {
+                textField.text = @"请输入围栏半径";
+            }
+            cell.textLabel.text = [NSString stringWithFormat:@"围栏半径 : %@米",textField.text];
+            break;
+            
+        default:
+            break;
+    }
+    [textField removeFromSuperview];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -154,22 +194,32 @@
     [ServerUserLocation GetLocationpostName:_userinfo.username Block:^(NSDictionary *locationdict){
         //        NSLog(@"%@",locationdict);
         CLLocationCoordinate2D pt;
-//        if ([[locationdict objectForKey:@"result"] isEqualToString:@"false"]) {
-//            NSString *message = [locationdict objectForKey:@"message"];
-//            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"定位失败" message:message delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"重新加载",nil];
-//            [alertview show];
-//        }else
-//        {
-//            float latitude = [[locationdict objectForKey:@"latiude"] floatValue];
-//            float longitude = [[locationdict objectForKey:@"longitude"] floatValue];
-//            pt = (CLLocationCoordinate2D){latitude,longitude};
-            pt = (CLLocationCoordinate2D){23.057863,113.360778};
+        if ([[locationdict objectForKey:@"result"] isEqualToString:@"false"]) {
+            NSString *message = [locationdict objectForKey:@"message"];
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"定位失败" message:message delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"重新加载",nil];
+            [alertview show];
+        }else
+        {
+            float latitude = [[locationdict objectForKey:@"latiude"] floatValue];
+            float longitude = [[locationdict objectForKey:@"longitude"] floatValue];
+            pt = (CLLocationCoordinate2D){latitude,longitude};
+//            pt = (CLLocationCoordinate2D){23.057863,113.360778};
             BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];
             reverseGeocodeSearchOption.reverseGeoPoint = pt;
             [_geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
             [self setTableview];
-//        }
+        }
     }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else if (buttonIndex == 1)
+    {
+        [self locationstart];
+    }
 }
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)view viewForAnnotation:(id <BMKAnnotation>)annotation

@@ -9,6 +9,8 @@
 #ifndef MyHeader_h
 #define MyHeader_h
 
+#define TagNumber(x) 1000 + x
+
 #define ScreenSize [UIScreen mainScreen].bounds.size
 
 #define NSLogStr(x) NSLog(@"%@",x);

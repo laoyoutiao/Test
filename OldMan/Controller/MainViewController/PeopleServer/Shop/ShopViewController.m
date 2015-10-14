@@ -63,7 +63,6 @@
     [[ServerShopMessage sharedInstance] GetShoppostString:@"佛山市" SelectKind:SelectKindCity];
     _ShopMessageTime = 0;
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(shopmessage:) userInfo:nil repeats:YES];
-    UIDatePickerModeCountDownTimer;
 }
 
 - (void)setTableView

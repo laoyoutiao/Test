@@ -216,7 +216,7 @@
 		5B50E7EE1BABF3A50047E861 /* NSDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Safe.m"; sourceTree = "<group>"; };
 		5B50E7F01BABF3A50047E861 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		5B50E7F11BABF3A50047E861 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
-		5B64A4171BB2A3B6000C55C4 /* MyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHeader.h; sourceTree = "<group>"; };
+		5B5526901BCE33CC0056C873 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5B64A4191BB2A489000C55C4 /* MyHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHeader.h; sourceTree = "<group>"; };
 		5BEC3C911B6AFC020069660C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		5BEC3C931B6AFC0B0069660C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -679,7 +679,6 @@
 		5BF5DE121B69B96D008DAF9D /* OldManTests */ = {
 			isa = PBXGroup;
 			children = (
-				5B64A4171BB2A3B6000C55C4 /* MyHeader.h */,
 				5BF5DE131B69B96D008DAF9D /* Supporting Files */,
 			);
 			path = OldManTests;
@@ -737,7 +736,7 @@
 		5BF5DDEB1B69B96D008DAF9D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "玉文辉";
 				TargetAttributes = {
 					5BF5DDF21B69B96D008DAF9D = {
@@ -888,6 +887,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5BF5DE091B69B96D008DAF9D /* Base */,
+				5B5526901BCE33CC0056C873 /* en */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -916,6 +916,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -987,6 +988,7 @@
 				);
 				INFOPLIST_FILE = OldMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "OldMan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OldMan;
 			};
 			name = Debug;
@@ -1001,6 +1003,7 @@
 				);
 				INFOPLIST_FILE = OldMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "OldMan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OldMan;
 			};
 			name = Release;
@@ -1018,6 +1021,7 @@
 				);
 				INFOPLIST_FILE = OldManTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "OldMan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OldMan;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OldMan.app/OldMan";
 			};
@@ -1032,6 +1036,7 @@
 				);
 				INFOPLIST_FILE = OldManTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "OldMan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OldMan;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OldMan.app/OldMan";
 			};

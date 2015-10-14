@@ -120,8 +120,14 @@
                 [button addTarget:self action:@selector(clickInfoButton:) forControlEvents:UIControlEventTouchUpInside];
                 if (i == 0) {
                     [button setTitle:@"资料" forState:UIControlStateNormal];
-                }
-                if (i == 3) {
+                }else if (i == 1)
+                {
+                    [button setTitle:@"分享" forState:UIControlStateNormal];
+                }else if (i == 2)
+                {
+                    [button setTitle:@"关于我们" forState:UIControlStateNormal];
+                    button.titleLabel.font = [UIFont systemFontOfSize:13];
+                }else if (i == 3) {
                     [ServerUserLocation GetUserStatepostName:_userinfo.username Block:^(BOOL block){
                         _state = block;
                     }];
@@ -202,10 +208,14 @@
             {
                 UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"监控状态" message:@"开启成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alertview show];
+                UIButton *btn = (UIButton *)[self.view viewWithTag:104];
+                [btn setTitle:@"监控已开启" forState:UIControlStateNormal];
             }else
             {
                 UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"监控状态" message:@"开启失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alertview show];
+                UIButton *btn = (UIButton *)[self.view viewWithTag:104];
+                [btn setTitle:@"监控未开启" forState:UIControlStateNormal];
             }
         }];
     }

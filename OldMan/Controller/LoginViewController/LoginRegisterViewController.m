@@ -31,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"%@",[NSArray class]);
+    
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"UserInfo"];
 
     self.view.backgroundColor = [UIColor whiteColor];
