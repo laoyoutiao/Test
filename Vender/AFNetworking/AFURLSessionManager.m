@@ -324,11 +324,13 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
             7) If the current class implementation of `resume` is not equal to the super class implementation of `resume` AND the current implementation of `resume` is not equal to the original implementation of `af_resume`, THEN swizzle the methods
             8) Set the current class to the super class, and repeat steps 3-8
          */
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+        NSURLSession * session = [NSURLSession sessionWithConfiguration:configuration];
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wnonnull"
-        NSURLSessionDataTask *localDataTask = [[NSURLSession sessionWithConfiguration:nil] dataTaskWithURL:nil];
+        NSURLSessionDataTask *localDataTask = [session dataTaskWithURL:nil];
 #pragma clang diagnostic pop
-        IMP originalAFResumeIMP = method_getImplementation(class_getInstanceMethod([_AFURLSessionTaskSwizzling class], @selector(af_resume)));
+        IMP originalAFResumeIMP = method_getImplementation(class_getInstanceMethod([self class], @selector(af_resume)));
         Class currentClass = [localDataTask class];
         
         while (class_getInstanceMethod(currentClass, @selector(resume))) {
@@ -343,18 +345,21 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
         }
         
         [localDataTask cancel];
+        [session finishTasksAndInvalidate];
     }
 }
 
 + (void)swizzleResumeAndSuspendMethodForClass:(Class)class {
     Method afResumeMethod = class_getInstanceMethod(self, @selector(af_resume));
     Method afSuspendMethod = class_getInstanceMethod(self, @selector(af_suspend));
-    
-    af_addMethod(class, @selector(af_resume), afResumeMethod);
-    af_addMethod(class, @selector(af_suspend), afSuspendMethod);
-    
-    af_swizzleSelector(class, @selector(resume), @selector(af_resume));
-    af_swizzleSelector(class, @selector(suspend), @selector(af_suspend));
+
+    if (af_addMethod(class, @selector(af_resume), afResumeMethod)) {
+        af_swizzleSelector(class, @selector(resume), @selector(af_resume));
+    }
+
+    if (af_addMethod(class, @selector(af_suspend), afSuspendMethod)) {
+        af_swizzleSelector(class, @selector(suspend), @selector(af_suspend));
+    }
 }
 
 - (NSURLSessionTaskState)state {
@@ -436,7 +441,9 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 
     self.securityPolicy = [AFSecurityPolicy defaultPolicy];
 
+#if !TARGET_OS_WATCH
     self.reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+#endif
 
     self.mutableTaskDelegatesKeyedByTaskIdentifier = [[NSMutableDictionary alloc] init];
 

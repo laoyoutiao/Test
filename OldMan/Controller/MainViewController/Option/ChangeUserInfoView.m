@@ -10,7 +10,7 @@
 #import "UserInfo.h"
 #import "MyHeader.h"
 
-@interface ChangeUserInfoView ()<UITextFieldDelegate>
+@interface ChangeUserInfoView ()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *AccountBtn;
 @property (weak, nonatomic) IBOutlet UIButton *AgeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *SexBtn;
@@ -62,13 +62,21 @@
 - (IBAction)ClickBtn:(id)sender {
     UIButton *button = sender;
     NSLogInteger(button.tag);
-    UITextField *field = [[UITextField alloc] initWithFrame:CGRectMake(button.frame.origin.x, button.frame.origin.y, button.frame.size.width, button.frame.size.height)];
+    UITextView *field = [[UITextView alloc] initWithFrame:CGRectMake(button.frame.origin.x, button.frame.origin.y, button.frame.size.width, button.frame.size.height)];
+    field.returnKeyType = UIReturnKeyDone;
     field.tag = button.tag;
     field.delegate = self;
     [field becomeFirstResponder];
     button.hidden = YES;
     field.layer.borderWidth = 0.5;
     [self.view addSubview:field];
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView
+{
+    NSLog(@"1");
+    [textView resignFirstResponder];
+    return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField

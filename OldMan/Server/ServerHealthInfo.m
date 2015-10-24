@@ -14,12 +14,12 @@
 + (void)GetHealthInfopostName:(NSString *)username time:(NSString *)time Block:(HealthBlock)block
 {
     __block NSDictionary *resultworkercommentdict;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{@"operate": @"look",
                                  @"username": username,
                                  @"time": time};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/HealthInfo" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/HealthInfo" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
 //              NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
@@ -37,7 +37,7 @@
             resultworkercommentdict = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"]};
         }
         block(resultworkercommentdict);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         resultworkercommentdict = @{@"result": @"false"};
         block(resultworkercommentdict);
     }];

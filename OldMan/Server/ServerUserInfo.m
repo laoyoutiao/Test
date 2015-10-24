@@ -36,7 +36,7 @@
                 UserInfoDictionary:(NSDictionary *)userinfodictionary
                UserInfoKindNsarray:(NSArray *)userinfokindarray
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 20;
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:@"update" forKey:@"operate"];
@@ -47,7 +47,7 @@
         [parameters setObject:str forKey:[userinfokindarray objectAtIndex:i]];
     }
     
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserInfo" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserInfo" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
 //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
@@ -58,7 +58,7 @@
             _resultchangeinfodict = @{@"result": @"false",
                       @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         _resultchangeinfodict = @{@"result": @"false",
                   @"message": @"网络或未知错误"};
     }];
@@ -68,12 +68,12 @@
 - (void)ChangePhonepostUsername:(NSString *)username
                       Cellphone:(NSString *)cellphone
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 20;
     NSDictionary *parameters = @{@"operate": @"update",
                                  @"username": username,
                                  @"cellphone": cellphone};
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserInfo" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserInfo" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
@@ -84,7 +84,7 @@
             _resultchangephonedict = @{@"result": @"false",
                       @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         _resultchangephonedict = @{@"result": @"false",
                   @"message": @"网络或未知错误"};
     }];

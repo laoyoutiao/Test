@@ -29,8 +29,7 @@
         NSLog(@"manager start failed!");
     }
 //    NSLog(@"%@",[NSProcessInfo processInfo].environment);
-    
-    
+
     
     [UIApplication sharedApplication].idleTimerDisabled = TRUE;
     self.locationManager = [[CLLocationManager alloc] init];

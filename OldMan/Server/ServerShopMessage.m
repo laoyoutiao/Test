@@ -52,11 +52,11 @@
 
 - (void)GetShoppostCity:(NSString *)city
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{@"operate": @"look",
                                  @"city": city};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/ShopManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/ShopManage" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
 //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
@@ -73,7 +73,7 @@
         {
             _resultcityshopdict = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         _resultcityshopdict = @{@"result": @"false"};
     }];
 }
@@ -81,11 +81,11 @@
 
 - (void)AreaOfShoppostBound:(NSString *)bound
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{@"operate": @"getshops",
                                  @"city": bound};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/ShopManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/ShopManage" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
@@ -97,7 +97,7 @@
         {
             _resultareashopdict = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         _resultareashopdict = @{@"result": @"false"};
     }];
 }
@@ -106,11 +106,11 @@
 
 - (void)InfoOfShoppostShopID:(NSString *)shopid
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{@"operate": @"shopinfo",
                                  @"city": shopid};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/ShopManage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/ShopManage" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
@@ -122,7 +122,7 @@
         {
             _resultshopinfodict = @{@"result": @"false", @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         _resultshopinfodict = @{@"result": @"false"};
     }];
 }

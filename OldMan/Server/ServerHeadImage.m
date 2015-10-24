@@ -35,7 +35,7 @@
 - (void)ImagepostUsername:(NSString *)username
                         Image:(UIImage *)image ImageKind:(ImageKind)imagekind
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSData *data = UIImageJPEGRepresentation(image, 1.0f);
     NSString *ImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     NSString *operate;
@@ -55,7 +55,8 @@
                                  @"username": username,
                                  @"imgStr": ImageStr};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/HeadImage" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/HeadImage" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
@@ -66,7 +67,7 @@
             _resultdict = @{@"result": @"false",
                       @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         _resultdict = @{@"result": @"false",
                   @"message": @"网络或未知错误"};
     }];

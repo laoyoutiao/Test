@@ -14,11 +14,11 @@
 + (void)GetLocationpostName:(NSString *)username Block:(LocationBlock)block
 {
     __block NSDictionary *resultlocation;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{@"operate": @"get",
                                  @"username": username};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserLocation" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserLocation" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"code"] integerValue] == 1) {
@@ -36,7 +36,7 @@
         }
 //        NSLog(@"%@",resultlocation);
         block(resultlocation);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         resultlocation = @{@"result": @"false", @"message": @"未知错误"};
         block(resultlocation);
     }];
@@ -46,11 +46,11 @@
 + (void)GetUserStatepostName:(NSString *)username Block:(StateBlock)block
 {
     __block BOOL result;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{@"operate": @"statue",
                                  @"username": username};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserLocation" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserLocation" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"messsage"] isEqualToString:@"true"]) {
@@ -60,7 +60,7 @@
             result = NO;
         }
         block(result);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         result = NO;
         block(result);
     }];
@@ -76,12 +76,12 @@
     {
         statestr = @"no";
     }
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{@"operate": @"switch",
                                  @"username": username,
                                  @"state": statestr};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserLocation" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/UserLocation" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"messsage"] isEqualToString:@"true"]) {
@@ -91,7 +91,7 @@
             result = NO;
         }
         block(result);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         result = NO;
         block(result);
     }];

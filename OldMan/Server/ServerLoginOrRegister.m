@@ -40,13 +40,13 @@
 - (void)LoginpostUsername:(NSString *)username
                  Password:(NSString *)password
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{@"operate": @"login",
                                  @"username": username,
                                  @"password": password};
     manager.requestSerializer.timeoutInterval = 20;
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"]; //服务器接受类型
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
 //        NSLog(@"json-->%@",responseObject);
         NSLog(@"%@",[responseObject objectForKey:@"message"]);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
@@ -58,7 +58,7 @@
             _resultlogindict = @{@"result": @"false",
                       @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
             _resultlogindict = @{@"result": @"false",
                       @"message": @"网络或未知错误"};
     }];
@@ -71,14 +71,14 @@
                   Usertype:(NSString *)usertype
                        sex:(NSString *)sex
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *parameters = @{@"operate": @"regist",
                                  @"username": username,
                                  @"password": password,
                                  @"usertype": usertype,
                                  @"sex":sex};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
             _resultregistdict = @{@"result": @"true",
@@ -88,7 +88,7 @@
             _resultregistdict = @{@"result": @"false",
                       @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
             _resultregistdict = @{@"result": @"false",
                       @"message": @"网络或未知错误"};
     }];
@@ -99,13 +99,13 @@
 - (void)BindcidpostUsername:(NSString *)username
                         Cid:(NSInteger)cid
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *cidstr = [NSString stringWithFormat:@"%ld",cid];
     NSDictionary *parameters = @{@"operate": @"bindcid",
                                  @"username": username,
                                  @"cid": cidstr};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
             _resultbinddict = @{@"result": @"true",
@@ -115,7 +115,7 @@
             _resultbinddict = @{@"result": @"false",
                       @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         _resultbinddict = @{@"result": @"false",
                   @"message": @"网络或未知错误"};
     }];
@@ -126,13 +126,13 @@
 - (void)ExitpostUsername:(NSString *)username
                      Cid:(NSInteger)cid
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *cidstr = [NSString stringWithFormat:@"%ld",cid];
     NSDictionary *parameters = @{@"operate": @"logout",
                                  @"username": username,
                                  @"cid": cidstr};
     manager.requestSerializer.timeoutInterval = 20;
-    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://192.168.1.146:8080/SmartPlatformWeb/servlet/LoginAndRegist" parameters:parameters success:^(NSURLSessionTask *operation, id responseObject) {
         NSLog(@"json-->%@",responseObject);
         if ([[responseObject objectForKey:@"status"] integerValue] == 1) {
             _resultexitdict = @{@"result": @"true",
@@ -142,7 +142,7 @@
             _resultexitdict = @{@"result": @"false",
                       @"message": [responseObject objectForKey:@"message"]};
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         _resultexitdict = @{@"result": @"false",
                   @"message": @"网络或未知错误"};
     }];
