@@ -62,7 +62,7 @@
 - (IBAction)ClickBtn:(id)sender {
     UIButton *button = sender;
     NSLogInteger(button.tag);
-    UITextView *field = [[UITextView alloc] initWithFrame:CGRectMake(button.frame.origin.x, button.frame.origin.y, button.frame.size.width, button.frame.size.height)];
+    UITextField *field = [[UITextField alloc] initWithFrame:CGRectMake(button.frame.origin.x, button.frame.origin.y, button.frame.size.width, button.frame.size.height)];
     field.returnKeyType = UIReturnKeyDone;
     field.tag = button.tag;
     field.delegate = self;

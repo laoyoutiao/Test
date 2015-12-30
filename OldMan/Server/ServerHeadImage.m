@@ -71,7 +71,10 @@
         _resultdict = @{@"result": @"false",
                   @"message": @"网络或未知错误"};
     }];
+    
+
 }
+
 
 #pragma mark
 
